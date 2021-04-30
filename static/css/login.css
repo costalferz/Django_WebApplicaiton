@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css');
+
+body{
+	font-family: 'Roboto', sans-serif;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+i {
+	margin-right: 10px;
+}
+
+/*----------multi-level-accordian-menu------------*/
+
+.logo img{
+  margin-top: 1.2px;
+  padding: 0px;
+  height: 60px;
+  padding-left: 30px;
+}
+
+.navbar-mainbg{
+    width: 100%;
+    background-color: #F4A8A8;
+    padding: 0px;
+}
+#navbarSupportedContent{
+overflow: hidden;
+position: relative;
+}
+
+#navbarSupportedContent ul li a{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+  padding: 20px 20px;
+  position: relative;
+}
+#navbarSupportedContent ul li a:hover{
+  color:rgb(65, 65, 66) ;
+}
+
+
+
+/*---------------- Search bar-------------------*/
+
+.search-box {
+    position: relative;
+    height: 34px;
+  margin-right: 20px;
+}
+.search-box input {
+    border: 0;
+    border-radius: 3px !important;
+    padding-right: 40px;
+    font-size: 15px;
+}
+
+
+.search-box .input-group-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+}
+.search-box .input-group-btn button {
+    background-color: transparent;
+    border: 0;
+    padding: 4px 8px;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .search-box {
+        position: relative;
+    margin-bottom: 20px;
+    }
+
+    .search-box input {
+        margin-left:25px !important;
+        margin-right:25px;
+    }
+
+    .search-box .input-group-btn button{
+        margin-left: -65px;
+    }
+}
+
+/*-------------responsive navbar--------------------*/
+@media(min-width: 992px){
+.navbar-expand-custom {
+-ms-flex-flow: row nowrap;
+flex-flow: row nowrap;
+-ms-flex-pack: start;
+justify-content: flex-start;
+}
+.navbar-expand-custom .navbar-nav {
+-ms-flex-direction: row;
+flex-direction: row;
+}
+.navbar-expand-custom .navbar-toggler {
+display: none;
+}
+.navbar-expand-custom .navbar-collapse {
+display: -ms-flexbox!important;
+display: flex!important;
+-ms-flex-preferred-size: auto;
+flex-basis: auto;
+}
+}
+@media (max-width: 991px){
+#navbarSupportedContent ul li a{
+  padding: 12px 30px;
+}
+.hori-selector{
+margin-top: 0px;
+margin-left: 10px;
+border-radius: 0;
+border-top-left-radius: 25px;
+border-bottom-left-radius: 25px;
+}
+.hori-selector .left,
+.hori-selector .right{
+right: 10px;
+}
+.hori-selector .left{
+top: -25px;
+left: auto;
+}
+.hori-selector .right{
+bottom: -25px;
+}
+.hori-selector .left:before{
+left: -25px;
+top: -25px;
+}
+.hori-selector .right:before{
+bottom: -25px;
+left: -25px;
+}
+}
+
+/* login */
+.login {
+    width: 280px;
+    margin-left: 50%;
+	  padding-top: 70%;
+    transform: translate(-50%,-50%);
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    justify-content: center;
+    box-sizing: content-box;
+    display: block;
+
+}
+
+.loginpic img{
+	width: 100%;
+	height: auto;
+	margin-top: 40%;
+	margin-left: -5%;
+}
+
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0px;
+    margin: 8px 0px;
+}
+
+.textbox h3{
+    font-size: 20px;
+    float:center;
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
+.textbox1 h4{
+    font-size: 15px;
+    float:center;
+}
+
+.textbox1 a{
+    color: #2D9CDB;
+    font-family: 'Roboto', sans-serif;
+}
+
+.textbox1 {
+    text-align: center;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.textbox input{
+    outline: none;
+    background:none;
+    color: #878787;
+    font-size: 18px;
+    width: 80%;
+    float: left;
+    margin: 0 10px;
+    height: 47px;
+    width: 250px;
+    border-radius: 5px;
+    padding-left: 8px;
+}
+
+.btnnn {
+	margin-top: 40px;
+	margin-bottom: 10px;
+	background: #F7D07A;
+	padding: 10px;
+	text-align: center;
+	color: black;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-left: 36%;
+}
+
+.login {
+	margin-top: 20%;
+	padding-left: 45%;
+}
+
+@media screen and (max-width: 420px){
+.loginpic{
+	margin-top: -20%;
+	margin-left: 40px;
+}
+.textbox h3{
+	font-size: 18px;
+
+}
+.btnnn{
+	margin-top: 20px;
+}
+.login{
+	padding-left: 2%;
+}
+}
+
+@media screen and (min-width: 768px){
+.loginpic img{
+	margin-left: 5%;
+  width: 100%;
+  height: auto;
+}
+.textbox h3{
+	font-size: 20px;
+}
+.login{
+	margin-left: 30%;
+	margin-top: 30%;
+}
+}
+
+@media screen and (min-width: 992px){
+.loginpic img{
+	margin-left: -20%;
+	margin-top: 40%;
+}
+}
+
+/*End login*/
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+
+footer a.text-light:hover { color: #F4A8A8 !important; }
+footer .cizgi { border-right: 1px solid #535e67; }
+
+.row h6 {
+    color: white;
+}
+
+.row h5 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.row button {
+    color: white;
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.row button:hover {
+    color: #F4A8A8;
+}
+
+.footermenu {
+    margin-left: 75%;
+}
+
+.footermenu h5{
+    text-align: center;
+}
+
+@media screen and (max-width: 768px){
+    .footermenu {
+        text-align: center;
+        margin-left: 0%;
+    }
+}
+
+@media (min-width: 992px) { footer .cizgi { border-right: none; } }
