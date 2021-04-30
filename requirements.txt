@@ -7,7 +7,7 @@ cffi==1.14.5
 chardet==4.0.0
 colorama==0.4.4
 colorlog==5.0.1
-cryptography==3.4.7
+cryptography
 defusedxml==0.7.1
 Django==1.6.11
 django-crispy-forms==1.11.1
