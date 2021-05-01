@@ -3,141 +3,117 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/login.css' % }">
-    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.4.1.min.js" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
-    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-6699adc3-2026-2be3-3a30-6890e859a448" crossorigin=""></script>
 
-    <title>{% block title %} Login {% endblock %}</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/login.css' % }">
+  <link rel="stylesheet" href="../static/css/login.css">
+  <link rel="stylesheet" href="https://code.jquery.com/jquery-3.4.1.min.js" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+  <script
+    src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-6699adc3-2026-2be3-3a30-6890e859a448"
+    crossorigin=""></script>
+
+  <title>{% block title %} Login {% endblock %}</title>
 </head>
 
 <body>
- 
-    <!-- <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a class="logo" href="#"><img src="https://media.discordapp.net/attachments/821058393442877482/835167645514727454/image0.png?width=1363&height=613" alt=""></a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars text-white"></i>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">COLORFUL</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">EARTH TONES</a>
-                </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">ABOUT US</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">LOGIN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">REGISTER</a>
-                </li>
-            </ul>
-
-            <form class="form-inline ">
-                <div class="input-group search-box">
-                    <input type="text" style="margin-left: 12px; text-shadow: #535e67 2px;" class="form-control" placeholder="Search">
-                    <span class="input-group-btn">
-                        <button class="btn" style="color: #F4A8A8;" type="submit"><i class="fas fa-search"></i></button>
-                    </span>
-                </div>
-            </form>    
-        </div>
-    </nav> -->
-    
-
-    
-<div class="container">
+  <div class="container">
     <div class="row">
-        <div class="col-sm-4 col-md-6"> 
-            <div class="loginpic">
-                <img src="https://media.discordapp.net/attachments/821058393442877482/834843346253381692/image0.jpg?width=1025&height=383">
-            </div>
+      <div class="col-sm-4 col-md-6">
+        <div class="loginpic">
+          <img
+            src="https://media.discordapp.net/attachments/821058393442877482/834843346253381692/image0.jpg?width=1025&height=383">
         </div>
-        
-        <div class="col-sm-8 col-md-6">
-        <form name="form1" enctype="multipart/form-data" method="POST" action="">
-          <div class="login"> 
+      </div>
+
+      <div class="col-sm-8 col-md-6">
+        <form class="loginForm" action="" method="POST">
+          {% csrf_token %}
+          <div class="login">
             <div class="textbox">
-                <h3>Username</h3>
-                <input type="text" placeholder="Username" name="" value="">
+              <label for="username">Username</label>
+              <input type="text" placeholder="Username" name="username" value="" required>
             </div>
 
             <div class="textbox">
-                <h3>Password</h3>
-                <input type="password" placeholder="Password" name="" value="">
+              <label for="password">Password</label>
+              <input type="password" placeholder="Password" name="password" value="" required>
             </div>
-
-            <input class="btnnn" type="button" name="" value="Login">
+            <!-- <button class="btnnn" type="submit" name="submit" value="sign_in">LOGIN</button> -->
+            <input class="btnnn" type="submit" name="submit" value="LOGIN">
 
             <div class="textbox1">
-            <h4>Create new user account<a href="#">Register here</a></h4>
-            <h4>Forgot your password?<a href="#">Reset password</a></h4>
+              <h4>Create new user account <a href="/Register"> Register here</a></h4>
+              <h4>Forgot your password? <a href="#"> Reset password</a></h4>
             </div>
-          </div>  
+          </div>
         </form>
-        </div>        
+      </div>
     </div>
-</div>
+  </div>
 
 
-    <footer>
-		<div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
-			<div class="container">
-				<div class="row">
-                    <div class="col-lg-4 col-md-6 mb-lg-0">
-                        <h6 class="text-uppercase font-weight-bold mb-4">NEWSLETTER SIGNUP</h6>
-                        <div class="p-1 rounded border">
-                          <div class="input-group">
-                            <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
-                            <div class="input-group-append">
-                              <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
-                            </div>
-                          </div>
-                        </div>
-						<h5 class="card-title text-white display-4" style="font-size:16px">SOCIAL LINKS</h5>
-					
-							<a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
-								
-							<a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
-								
-							<a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
-								
-                            <h5 class="card-title text-white display-4" style="font-size:15px">Don’t forget follow us !!</h5>
-                    </div>
-					
-					<div class="col-sm-8 col-md-6">
-							<div class="footermenu">
-							    <h5 class="card-title text-white display-4" style="font-size:18px">FOOTER MENU</h5>
-                  <a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">Colorful</h6></a>
-                  <a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">Earthtones</h6></a>
-                  <a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">About us</h6></a>
-					
-							</div>
-						</div>
-					</div>	
-				</div>
-			</div>
-		</div>
-	</footer>    
+  <footer>
+    <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-lg-0">
+            <h6 class="text-uppercase font-weight-bold mb-4">NEWSLETTER SIGNUP</h6>
+            <div class="p-1 rounded border">
+              <div class="input-group">
+                <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1"
+                  class="form-control border-0 shadow-0">
+                <div class="input-group-append">
+                  <button id="button-addon1" type="submit" class="btn btn-link"><i
+                      class="fa fa-paper-plane"></i></button>
+                </div>
+              </div>
+            </div>
+            <h5 class="card-title text-white display-4" style="font-size:16px">SOCIAL LINKS</h5>
+
+            <a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
+
+            <a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
+
+            <a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
+
+            <h5 class="card-title text-white display-4" style="font-size:15px">Don’t forget follow us !!</h5>
+          </div>
+
+          <div class="col-sm-8 col-md-6">
+            <div class="footermenu">
+              <h5 class="card-title text-white display-4" style="font-size:18px">FOOTER MENU</h5>
+              <a class="text-light" href="#">
+                <h6 class="card-title text-white" style="font-size:16px">Colorful</h6>
+              </a>
+              <a class="text-light" href="#">
+                <h6 class="card-title text-white" style="font-size:16px">Earthtones</h6>
+              </a>
+              <a class="text-light" href="#">
+                <h6 class="card-title text-white" style="font-size:16px">About us</h6>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
 
 </body>
 
 </html>
+{% endblock %}

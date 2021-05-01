@@ -1,11 +1,13 @@
+{% extends "1Navbar.html" %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="{% static 'css/payment.css'%}">
     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.4.1.min.js" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
@@ -14,7 +16,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-6699adc3-2026-2be3-3a30-6890e859a448" crossorigin=""></script>
 
-    <title>payment</title>
+    <title>{% block title %} Payment {% endblock %}</title>
 </head>
 <body>
 

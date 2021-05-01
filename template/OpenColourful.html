@@ -1,4 +1,6 @@
+{% extends "1Navbar.html" %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="css/open_box.css">
+  <link rel="stylesheet" href="{% static 'css/open_box.css'%}">
   <link rel="stylesheet" href="https://code.jquery.com/jquery-3.4.1.min.js" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
   <script
@@ -15,11 +17,11 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-6699adc3-2026-2be3-3a30-6890e859a448"></script>
-  <title>Openbox</title>
+  <title>{% block title %} OpenBox {% endblock %}</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-custom navbar-mainbg">
+  <!-- <nav class="navbar navbar-expand-custom navbar-mainbg">
     <a class="logo" href="#"><img
         src="https://media.discordapp.net/attachments/821058393442877482/835167645514727454/image0.png?width=1363&height=613"
         alt=""></a>
@@ -62,7 +64,7 @@
         </div>
       </form>
     </div>
-  </nav>
+  </nav> -->
   <a href="#">
   <div class="openbox" >
 
@@ -139,3 +141,4 @@
 </body>
 
 </html>
+{% endblock %}

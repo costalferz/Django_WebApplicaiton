@@ -1,5 +1,4 @@
 asgiref
-beautifulsoup4
 boto
 Cactus
 certifi
