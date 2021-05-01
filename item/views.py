@@ -27,6 +27,10 @@ def Random(request):
 def OpenEarthtone(request):
     return render(request,'OpenEarthtone.html')
 
+def OpenColourful(request):
+    return render(request,'OpenColourful.html')
+
+
 def RandomTone(request):
     template_name = 'index.html'
     model = Item
