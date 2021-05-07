@@ -46,13 +46,14 @@ def registration(request):
     username = request.POST['username']
     password=request.POST['password']
     repassword=request.POST['repassword']
-    #mobile = request.POST['mobile']
-    firstname = request.POST['firstname']
-    lastname = request.POST['lastname']
+    mobile = request.POST['mobile']
     email = request.POST['email']
-    city = request.POST['city']
-    city = city.lower()
-    pincode = request.POST['pincode']
+    mobile = request.POST['mobile']
+    firstname = request.POST['firstname']
+    # lastname = request.POST['lastname']
+    # city = request.POST['city']
+    # city = city.lower()
+    # pincode = request.POST['pincode']
     try:
         user = User.objects.create_user(username = username, password = password, email = email)
         user.first_name = firstname
