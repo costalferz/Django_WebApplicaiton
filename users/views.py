@@ -35,6 +35,42 @@ def Loginform(request):
     else:
         return render(request, 'Login.html')
 
+def logout_view(request):
+    auth.logout(request)
+    return render(request, 'Login.html')
+
+def register(request):
+    return render(request, 'register.html')
+
+def registration(request):
+    username = request.POST['username']
+    password=request.POST['password']
+    repassword=request.POST['repassword']
+    #mobile = request.POST['mobile']
+    firstname = request.POST['firstname']
+    lastname = request.POST['lastname']
+    email = request.POST['email']
+    city = request.POST['city']
+    city = city.lower()
+    pincode = request.POST['pincode']
+    try:
+        user = User.objects.create_user(username = username, password = password, email = email)
+        user.first_name = firstname
+        user.last_name = lastname
+        user.save()
+    except:
+        return render(request, 'customer/registration_error.html')
+    try:
+        area = Area.objects.get(city = city, pincode = pincode)
+    except:
+        area = None
+    if area is not None:
+        customer = Customer(user = user, mobile = mobile, area = area)
+    else:
+        area = Area(city = city, pincode = pincode)
+        area.save()
+        area = Area.objects.get(city = city, pincode = pincode)
+        customer = Customer(user = user, mobile = mobile, area = area)
 
 # def Loginform(request):
 #     username = request.POST['username']
