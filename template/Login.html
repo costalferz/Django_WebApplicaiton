@@ -25,7 +25,13 @@
 </head>
 
 <body>
-
+  {%if messages%}
+  <div>
+      {% for message in messages %}
+          <h4 style="color: red;">{{message}}</h4>
+      {%endfor%}
+  </div>
+  {%endif%}
 
 
 

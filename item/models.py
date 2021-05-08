@@ -14,7 +14,7 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.category)
         super(Category, self).save(*args, **kwargs)
-#test
+        
     class Meta:
         verbose_name_plural = "หมวดหมู่"
 

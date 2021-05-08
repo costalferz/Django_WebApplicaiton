@@ -13,12 +13,25 @@ def home(request):
 
 def Aboutus(request):
     return render(request,'Aboutus.html')
+# class Colourful(ListView):
+#     template_name = 'Colourful.html'
+#     model = Item
+#     def get_queryset(self):
+#         queryset = super(Colourful, self).get_queryset()
+#         return queryset.all().order_by('-id')[:9]
 
 def Colourful(request):
     return render(request,'Colourful.html')
 
 def Earthtone(request):
     return render(request,'EarthTone.html')
+
+# class Earthtone(ListView):
+#     template_name = 'EarthTone.html'
+#     model = Item
+#     def get_queryset(self):
+#         queryset = super(Earthtone, self).get_queryset()
+#         return queryset.all().order_by('-id')[:9]
 
 def Random(request):
     model = Item

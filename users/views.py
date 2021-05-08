@@ -12,11 +12,6 @@ from django.views.generic import ( CreateView, FormView, TemplateView)
 
 from .form import UserRegisterForm
 # Create your views here.
-class SignUpView(CreateView):
-    form_class = UserRegisterForm
-    success_url = reverse_lazy('login')
-    template_name = 'Signup.html'
-
 
 def Loginform(request):
     if request.method == "POST":
@@ -28,11 +23,15 @@ def Loginform(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('home'))
             else:
-                return HttpResponse("Your account was inactive.")
+                messages.info(request,"Please Login Again.") 
+                return redirect('/Login')
         else:
-            print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(username, password))
-            return HttpResponse("Invalid login details given")
+
+            messages.info(request,"They used username: {} and password: {}".format(username, password)) 
+            print("They used username: {}".format(username))
+            return redirect('/Login')
+            #HttpResponse('Login.html')
+            
     else:
         return render(request, 'Login.html')
 
@@ -59,6 +58,7 @@ def register(request):
                 password=password,
                 email=email,)
                 new_user.save()
+                auth.login(request,new_user)
                 return redirect('/')
         else:
             messages.info(request,"password doesn't match")
@@ -66,44 +66,7 @@ def register(request):
     else:
         return render(request, 'Signup.html')
 
-# def registration(request):
-#     username = request.POST['username']
-#     password=request.POST['password']
-#     repassword=request.POST['repassword']
-#     email = request.POST['email']
-#     mobile = request.POST['mobile']
-#     firstname = request.POST['firstname']
-#     lastname = request.POST['lastname']
-#     try:
-#         user = User.objects.create_user(username = username, password = password, email = email)
-#         user.first_name = firstname
-#         user.last_name = lastname
-#         user.save()
-#     except:
-#         return render(request, 'Error,try agin')
 
-def registration(request):
-    username=request.POST['username']
-    email=request.POST['email']
-    password=request.POST['password']
-    repassword=request.POST['repassword']
-    if password==repassword:
-        if User.objects.filter(username=username).exists():
-            messages.info(request,"This User id has already been registered.")
-            return redirect('/Register')
-        elif  User.objects.filter(email=email).exists():
-            messages.info(request,"This email has already been registered.")
-            return redirect('/Register')
-        else:
-            new_user= User.objects.create_user(
-            username=username,
-            password=password,
-            email=email,)
-            new_user.save()
-            return redirect('/')
-    else:
-        messages.info(request,"password doesn't match")
-        return redirect('/Register')
 
 # def Loginform(request):
 #     username = request.POST['username']
