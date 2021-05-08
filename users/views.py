@@ -17,6 +17,7 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'Signup.html'
 
+
 def Loginform(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -63,7 +64,7 @@ def register(request):
             messages.info(request,"password doesn't match")
             return redirect('/Register')
     else:
-        return render(request, 'register.html')
+        return render(request, 'Signup.html')
 
 # def registration(request):
 #     username = request.POST['username']
