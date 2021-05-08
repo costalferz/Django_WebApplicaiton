@@ -17,23 +17,29 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 	
 	<link rel="stylesheet" href="{% static 'css/index.css' %}">
-	<script src="{% static 'js/navbar.js' %"></script>
+	<script src="{% static 'js/navbar.js' %}"></script>
 
 </head>
 <body>
-
+    {%if messages%}
+    <div>
+        {% for message in messages %}
+            <h3 style="color: red;">{{message}}</h3>
+        {%endfor%}
+    </div>
+    {%endif%}
     <div class="row" style="padding: 0px;margin: 0px;">
         <div class="col-md" style="text-align: center;">
             <img class="indexImage" src="{% static 'img/1.jpg' %}"> 
         </div>
         <div class="col-md" style="text-align: center;">
             <div class="CreateAccountContent">
-                <form name="form1" enctype="multipart/form-data" method="POST" action="">
+                <form class="registration"  method="POST" action="">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-8" style="text-align: left;">
-                            <label><b> Username *</b></label>
-                            <input type="text" class="form-control" id="txtUsername" name="username" value="" required >
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" placeholder="Username" id="username" name="username" value="" required >
 
                             <ul style="list-style: none;font-size: 14px;padding-inline-start: 0px;margin-top: 10px;">
                                 <li>Required. 150 characters or fewer. Letters, digits and @ / . / + / - / _ only</li>
@@ -44,15 +50,15 @@
 
                     <div class="row">
                         <div class="col-md-8" style="text-align: left;">
-                            <label><b>Email *</b></label>
-                            <input type="text" class="form-control" id="txtPhoneNumber" name="email" value="" required>
+                            <label for="email">E-mail</label>
+                            <input type="email" placeholder="E-mail" class="form-control" id="email" name="email" value="" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-8" style="text-align: left;">
-                            <label><b>Password *</b></label>
-                            <input type="password" class="form-control"  id="txtPassword" name="password" value="" required >
+                            <label for="password">Password</label> 
+                            <input type="password" placeholder="Password" class="form-control"  id="password" name="password" value="" required >
 
                             <ul style="list-style: '-  ';font-size: 14px;padding-inline-start: 1em;margin-top: 10px;">
                                 <li>Your password can't be too similar to your other personal information.</li>
@@ -66,8 +72,8 @@
 
                     <div class="row">
                         <div class="col-md-8" style="text-align: left;">
-                            <label><b>Password Confirmation *</b></label>
-                            <input type="password" class="form-control" id="txtPasswordConfirmation" name="repassword" value="" required > 
+                            <label for="repassword">Password Confirmation *</label>
+                            <input type="password" placeholder="Confirm Password" class="form-control" id="repassword" name="repassword" value="" required > 
 
                             <ul style="list-style: none;font-size: 14px;padding-inline-start: 0px;margin-top: 10px;">
                                 <li>Enter the same password as before, for verification.</li>
@@ -78,12 +84,12 @@
 
                     <div class="row">
                         <div class="col-md-8" style="text-align: center;margin-top: 15px;">
-                            <button class="button"><b>Register</b></button><br>
-
+                            <!-- <button class="button"><b>Register</b></button><br> -->
+                            <button class="button" type="submit" name="submit" value="Register">Register</button>   
                             <ul style="list-style: none;font-size: 14px;padding-inline-start: 0px;margin-top: 10px;">
                                 <li>
                                     Do you have a account? 
-                                    <a href="#">Click here to Login</a>                                
+                                    <a href="/Login">Click here to Login</a>                                
                                 </li>
                             </ul>
                         </div>

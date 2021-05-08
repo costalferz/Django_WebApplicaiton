@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render,get_object_or_404
 from django.urls import reverse_lazy,reverse
 from django.http import HttpResponseRedirect, HttpResponse
-
+from django.contrib import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -40,38 +40,69 @@ def logout_view(request):
     return render(request, 'Login.html')
 
 def register(request):
-    return render(request, 'register.html')
+    if request.method == "POST":
+        username=request.POST['username']
+        email=request.POST['email']
+        password=request.POST['password']
+        repassword=request.POST['repassword']
+        if password==repassword:
+            if User.objects.filter(username=username).exists():
+                messages.info(request,"This User id has already been registered.")
+                return redirect('/Register')
+            elif  User.objects.filter(email=email).exists():
+                messages.info(request,"This email has already been registered.")
+                return redirect('/Register')
+            else:
+                new_user= User.objects.create_user(
+                username=username,
+                password=password,
+                email=email,)
+                new_user.save()
+                return redirect('/')
+        else:
+            messages.info(request,"password doesn't match")
+            return redirect('/Register')
+    else:
+        return render(request, 'register.html')
+
+# def registration(request):
+#     username = request.POST['username']
+#     password=request.POST['password']
+#     repassword=request.POST['repassword']
+#     email = request.POST['email']
+#     mobile = request.POST['mobile']
+#     firstname = request.POST['firstname']
+#     lastname = request.POST['lastname']
+#     try:
+#         user = User.objects.create_user(username = username, password = password, email = email)
+#         user.first_name = firstname
+#         user.last_name = lastname
+#         user.save()
+#     except:
+#         return render(request, 'Error,try agin')
 
 def registration(request):
-    username = request.POST['username']
+    username=request.POST['username']
+    email=request.POST['email']
     password=request.POST['password']
     repassword=request.POST['repassword']
-    mobile = request.POST['mobile']
-    email = request.POST['email']
-    mobile = request.POST['mobile']
-    firstname = request.POST['firstname']
-    # lastname = request.POST['lastname']
-    # city = request.POST['city']
-    # city = city.lower()
-    # pincode = request.POST['pincode']
-    try:
-        user = User.objects.create_user(username = username, password = password, email = email)
-        user.first_name = firstname
-        user.last_name = lastname
-        user.save()
-    except:
-        return render(request, 'customer/registration_error.html')
-    try:
-        area = Area.objects.get(city = city, pincode = pincode)
-    except:
-        area = None
-    if area is not None:
-        customer = Customer(user = user, mobile = mobile, area = area)
+    if password==repassword:
+        if User.objects.filter(username=username).exists():
+            messages.info(request,"This User id has already been registered.")
+            return redirect('/Register')
+        elif  User.objects.filter(email=email).exists():
+            messages.info(request,"This email has already been registered.")
+            return redirect('/Register')
+        else:
+            new_user= User.objects.create_user(
+            username=username,
+            password=password,
+            email=email,)
+            new_user.save()
+            return redirect('/')
     else:
-        area = Area(city = city, pincode = pincode)
-        area.save()
-        area = Area.objects.get(city = city, pincode = pincode)
-        customer = Customer(user = user, mobile = mobile, area = area)
+        messages.info(request,"password doesn't match")
+        return redirect('/Register')
 
 # def Loginform(request):
 #     username = request.POST['username']
