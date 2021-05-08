@@ -14,7 +14,7 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.category)
         super(Category, self).save(*args, **kwargs)
-        
+
     class Meta:
         verbose_name_plural = "หมวดหมู่"
 
@@ -26,7 +26,7 @@ class Item(models.Model):
     img = models.ImageField(default='default_item.png', upload_to='item_pics')
     amount = models.PositiveIntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.PROTECT,default=None)
-    price = models.DecimalField(default=0,max_digits=3,decimal_places=2)
+    price = models.PositiveIntegerField(default=0)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -34,7 +34,7 @@ class Item(models.Model):
         img = Image.open(self.img.path)
 
         if img.height > 200 or img.width > 200:
-            output_size = (150, 300)
+            output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.img.path)
     

@@ -4,7 +4,7 @@ from django.db.models import Count
 from django.contrib.auth.models import User
 from django.views.generic import (DetailView,FormView,ListView,TemplateView,UpdateView)
 from django.contrib.auth.decorators import login_required
-from .models import (Item,itemHistory,Payment,Category)
+from .models import Item,itemHistory,Payment,Category
 # Create your views here.
 
 
@@ -15,16 +15,29 @@ def Aboutus(request):
     return render(request,'Aboutus.html')
 # class Colourful(ListView):
 #     template_name = 'Colourful.html'
-#     model = Item
+#     model = models.Item
 #     def get_queryset(self):
 #         queryset = super(Colourful, self).get_queryset()
 #         return queryset.all().order_by('-id')[:9]
+    # def get_queryset(self):
+    #     ItemColourful = Item.objects.get(id__exact=1)
+    #     #queryset = super(Colourful, self).get_queryset()
+
+    #     return ItemColourful.all().order_by('-id')[:9]
 
 def Colourful(request):
-    return render(request,'Colourful.html')
+    #Item_colour = Item.objects.all().order_by('-id')
+    some_colour = Category.objects.get(category="Colourful")
+    Item_colour = Item.objects.all().filter(category=some_colour)
+    context = {'Item_co': Item_colour}
+
+    return render(request,'Colourful.html',context)
 
 def Earthtone(request):
-    return render(request,'EarthTone.html')
+    some_Earthtones = Category.objects.get(category="Earthtones")
+    Item_Earthtones = Item.objects.all().filter(category=some_Earthtones)
+    context = {'Item_Earth': Item_Earthtones}
+    return render(request,'EarthTone.html',context=context)
 
 # class Earthtone(ListView):
 #     template_name = 'EarthTone.html'

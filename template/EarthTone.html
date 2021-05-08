@@ -3,41 +3,77 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/COLORFUL.css' %}">
     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.4.1.min.js" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
-    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+    <script
+        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-6699adc3-2026-2be3-3a30-6890e859a448" ></script>
-    <link rel="stylesheet" href="{% static 'css/EARTH TONES.css' %}">
+    <script src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-6699adc3-2026-2be3-3a30-6890e859a448"></script>
 
     <title>{% block title %} Earthtones {% endblock %}</title>
 </head>
+
 <body>
-    <div class="productList1" id="productList1_">
+
+     <div class="productList1" id="productList1_">
         <div class="productWidget">
             <div class="row ">
+                {% for item in Item_Earth %}
                 <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
                     <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
                         <div class="thumbnail border rounded">
                             <div class="productImage rounded-top">
-      <img class="mx-auto" src="https://media.discordapp.net/attachments/833338142873354300/834418000664854548/image1.jpg?width=564&amp;height=587" data-src="https://media.discordapp.net/attachments/833338142873354300/834418000664854548/image1.jpg?width=564&amp;height=587" >
+                                <img class="mx-auto"
+                                    src="{{ item.img.url }}"
+                                
+                                    alt="XOXO BonBon Liquid Matte Lip Limited Box Set "
+                                    title="XOXO BonBon Liquid Matte Lip Limited Box Set " style="opacity: 1;">
                             </div>
-                                <div class="productCaption">
-                                    <div class="productName">
-                                        <h3 class="h3-hover">Brown Tank Crop</h3>
-                                    </div>                                                                                                                                                                                                              
-                            <div class="productIntro">
-                                <p>This will crop take you back in 90' </p> </div>                                                                                                                                                               
-                                    <div class="productPrice">
-                                 <div class="ff-price fs-price fc-price">
-                            <span class="SpePrice">฿ 400 </span>
-                                    </div>   
-                                </div>                                                                                                                                 
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">{{ item.name }}</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p>{{ item.detail }} </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ {{ item.price }} </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} 
+                <!-- <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
+                    <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
+                        <div class="thumbnail border rounded">
+                            <div class="productImage rounded-top">
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834418140242509834/image2.jpg?width=594&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834418140242509834/image2.jpg?width=594&height=586">
+                            </div>
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">Kandall Bag</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p> Soft & Silky Colorfulls bags!(9 colors) </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">350 per piece</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -47,41 +83,22 @@
                     <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
                         <div class="thumbnail border rounded">
                             <div class="productImage rounded-top">
-      <img class="mx-auto" src="https://media.discordapp.net/attachments/833338142873354300/834418001071439912/image2.jpg?width=466&height=586" data-src="https://media.discordapp.net/attachments/833338142873354300/834418001071439912/image2.jpg?width=466&height=586" >
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834418140476604436/image3.jpg?width=469&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834418140476604436/image3.jpg?width=469&height=586">
                             </div>
-                                <div class="productCaption">
-                                    <div class="productName">
-                                        <h3 class="h3-hover">Minimal Plate Set</h3>
-                                    </div>                                                                                                                                                                                                              
-                            <div class="productIntro">
-                                <p> Take me to your party! </p> </div>                                                                                                                                                               
-                                    <div class="productPrice">
-                                 <div class="ff-price fs-price fc-price">
-                            <span class="SpePrice">฿ 480 </span>
-                                    </div>   
-                                </div>                                                                                                                                 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
-                    <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
-                        <div class="thumbnail border rounded">
-                            <div class="productImage rounded-top">
-      <img class="mx-auto" src="https://media.discordapp.net/attachments/833338142873354300/834418001259397120/image3.jpg?width=420&height=587" data-src="https://media.discordapp.net/attachments/833338142873354300/834418001259397120/image3.jpg?width=420&height=587" >
-                            </div>
-                                <div class="productCaption">
-                                    <div class="productName">
-                                        <h3 class="h3-hover">Boby Candle</h3>
-                                    </div>                                                                                                                                                                                                              
-                            <div class="productIntro">
-                                <p> Body candle shape(no scent) </p> </div>                                                                                                                                                               
-                                    <div class="productPrice">
-                                 <div class="ff-price fs-price fc-price">
-                            <span class="SpePrice">฿ 250 </span>
-                                    </div>   
-                                </div>                                                                                                                                 
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">Black N' Blue</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p> Believe me! I'm pretty and silky </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ 500 </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -91,41 +108,22 @@
                     <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
                         <div class="thumbnail border rounded">
                             <div class="productImage rounded-top">
-      <img class="mx-auto" src="https://media.discordapp.net/attachments/833338142873354300/834418001553391646/image4.jpg?width=586&height=586" data-src="https://media.discordapp.net/attachments/833338142873354300/834418001553391646/image4.jpg?width=586&height=586">
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834418140695101440/image4.jpg?width=586&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834418140695101440/image4.jpg?width=586&height=586">
                             </div>
-                                <div class="productCaption">
-                                    <div class="productName">
-                                        <h3 class="h3-hover">Heart Vase</h3>
-                                    </div>                                                                                                                                                                                                              
-                            <div class="productIntro">
-                                <p> Heart shape vase </p> </div>                                                                                                                                                               
-                                    <div class="productPrice">
-                                 <div class="ff-price fs-price fc-price">
-                            <span class="SpePrice">฿ 550 per piece </span>
-                                    </div>   
-                                </div>                                                                                                                                 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
-                    <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
-                        <div class="thumbnail border rounded">
-                            <div class="productImage rounded-top">
-      <img class="mx-auto" src="https://media.discordapp.net/attachments/833338142873354300/834418001784733696/image5.jpg?width=579&height=586" data-src="https://media.discordapp.net/attachments/833338142873354300/834418001784733696/image5.jpg?width=579&height=586" >
-                            </div>
-                                <div class="productCaption">
-                                    <div class="productName">
-                                        <h3 class="h3-hover"> Fly Me To The Moon </h3>
-                                    </div>                                                                                                                                                                                                              
-                            <div class="productIntro">
-                                <p> Moon lamp shape </p> </div>                                                                                                                                                               
-                                    <div class="productPrice">
-                                 <div class="ff-price fs-price fc-price">
-                            <span class="SpePrice">฿ 590 </span>
-                                    </div>   
-                                </div>                                                                                                                                 
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">Happy Hat</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p> Wear me when you feel happy (4 colors) </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ 480 </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -135,41 +133,22 @@
                     <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
                         <div class="thumbnail border rounded">
                             <div class="productImage rounded-top">
-      <img class="mx-auto" src="https://media.discordapp.net/attachments/833338142873354300/834418002056314910/image6.jpg?width=469&height=586" data-src="https://media.discordapp.net/attachments/833338142873354300/834418002056314910/image6.jpg?width=469&height=586" >
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834418140909142036/image5.jpg?width=586&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834418140909142036/image5.jpg?width=586&height=586">
                             </div>
-                                <div class="productCaption">
-                                    <div class="productName">
-                                        <h3 class="h3-hover">Chzins</h3>
-                                    </div>                                                                                                                                                                                                              
-                            <div class="productIntro">
-                                <p>Gold-chain earrings(Brass+18K) </p> </div>                                                                                                                                                               
-                                    <div class="productPrice">
-                                 <div class="ff-price fs-price fc-price">
-                            <span class="SpePrice">฿ 250 </span>
-                                    </div>   
-                                </div>                                                                                                                                 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
-                    <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
-                        <div class="thumbnail border rounded">
-                            <div class="productImage rounded-top">
-      <img class="mx-auto" src="https://media.discordapp.net/attachments/833338142873354300/834418002279137290/image7.jpg?width=440&height=586" data-src="https://media.discordapp.net/attachments/833338142873354300/834418002279137290/image7.jpg?width=440&height=586" >
-                            </div>
-                                <div class="productCaption">
-                                    <div class="productName">
-                                        <h3 class="h3-hover">Brown Bucket</h3>
-                                    </div>                                                                                                                                                                                                              
-                            <div class="productIntro">
-                                <p> Soft brown bucket,fit to every gender </p> </div>                                                                                                                                                               
-                                    <div class="productPrice">
-                                 <div class="ff-price fs-price fc-price">
-                            <span class="SpePrice">฿ 380 </span>
-                                    </div>   
-                                </div>                                                                                                                                 
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover"> Flower Vase </h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p> Small vase for flower (11 colors) </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ 350 per piece</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -179,70 +158,185 @@
                     <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
                         <div class="thumbnail border rounded">
                             <div class="productImage rounded-top">
-      <img class="mx-auto" src="https://media.discordapp.net/attachments/833338142873354300/834827449459146782/image2.png?width=396&height=587" data-src="https://media.discordapp.net/attachments/833338142873354300/834827449459146782/image2.png?width=396&height=587" >
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834418141110206484/image6.jpg?width=337&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834418141110206484/image6.jpg?width=337&height=586">
                             </div>
-                                <div class="productCaption">
-                                    <div class="productName">
-                                        <h3 class="h3-hover">Japenese Denim</h3>
-                                    </div>                                                                                                                                                                                                              
-                            <div class="productIntro">
-                                <p> Comfy and fit to every style</p> </div>                                                                                                                                                               
-                                    <div class="productPrice">
-                                 <div class="ff-price fs-price fc-price">
-                            <span class="SpePrice">฿ 790 </span>
-                                    </div>   
-                                </div>                                                                                                                                 
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">I Light you</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p>Colorfulls light - with differeut design (5 colors) </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ 750 per piece </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
+                    <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
+                        <div class="thumbnail border rounded">
+                            <div class="productImage rounded-top">
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834827448944295976/image0.png?width=589&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834827448944295976/image0.png?width=589&height=586">
+                            </div>
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">Bubble Candle</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p>Bubble candle (6 colors/scent) </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ 250 per piece</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
+                    <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
+                        <div class="thumbnail border rounded">
+                            <div class="productImage rounded-top">
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834827449204080670/image1.png?width=436&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834827449204080670/image1.png?width=436&height=586">
+                            </div>
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">Round Lamp</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p> Round lamp shape,come with 4 different design (4 colors) </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ 790 pre piece</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
+                    <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
+                        <div class="thumbnail border rounded">
+                            <div class="productImage rounded-top">
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834827449732169768/image3.png?width=391&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834827449732169768/image3.png?width=391&height=586">
+                            </div>
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">Lucky Shorts</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p> for both male & female </p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ 300 </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item col-6 col-md-6 col-lg-3 mobileProductList1">
+                    <div class="itemInner rounded" style="display: flex; overflow: hidden; width: 100%;">
+                        <div class="thumbnail border rounded">
+                            <div class="productImage rounded-top">
+                                <img class="mx-auto"
+                                    src="https://media.discordapp.net/attachments/833338142873354300/834827450159726612/image4.png?width=393&height=586"
+                                    data-src="https://media.discordapp.net/attachments/833338142873354300/834827450159726612/image4.png?width=393&height=586">
+                            </div>
+                            <div class="productCaption">
+                                <div class="productName">
+                                    <h3 class="h3-hover">Rainbow Pants</h3>
+                                </div>
+                                <div class="productIntro">
+                                    <p> Take me to your party!</p>
+                                </div>
+                                <div class="productPrice">
+                                    <div class="ff-price fs-price fc-price">
+                                        <span class="SpePrice">฿ 480 </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div> 
 
             </div>
         </div>
-        </div>
+    </div>
 
     <footer>
-		<div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
-			<div class="container">
-				<div class="row">
+        <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
+            <div class="container">
+                <div class="row">
                     <div class="col-lg-4 col-md-6 mb-lg-0">
                         <h6 class="text-uppercase font-weight-bold mb-4">NEWSLETTER SIGNUP</h6>
                         <div class="p-1 rounded border">
-                          <div class="input-group">
-                            <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
-                            <div class="input-group-append">
-                              <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
+                            <div class="input-group">
+                                <input type="email" placeholder="Enter your email address"
+                                    aria-describedby="button-addon1" class="form-control border-0 shadow-0">
+                                <div class="input-group-append">
+                                    <button id="button-addon1" type="submit" class="btn btn-link"><i
+                                            class="fa fa-paper-plane"></i></button>
+                                </div>
                             </div>
-                          </div>
                         </div>
-						<h5 class="card-title text-white display-4" style="font-size:16px">SOCIAL LINKS</h5>
-					
-							<a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
-								
-							<a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
-								
-							<a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
-								
-                            <h5 class="card-title text-white display-4" style="font-size:15px">Don’t forget follow us !!</h5>
-                    </div>
-					
-					<div class="col-sm-8 col-md-6">
-							<div class="footermenu">
-							    <h5 class="card-title text-white display-4" style="font-size:18px">FOOTER MENU</h5>
-                  <a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">Colorful</h6></a>
-                  <a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">Earthtones</h6></a>
-                  <a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">About us</h6></a>
-					
-							</div>
-						</div>
-					</div>	
-				</div>
-			</div>
-		</div>
-	</footer>
+                        <h5 class="card-title text-white display-4" style="font-size:16px">SOCIAL LINKS</h5>
 
-      </body>
-      </html>    
+                        <a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
+
+                        <a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
+
+                        <a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
+
+                        <h5 class="card-title text-white display-4" style="font-size:15px">Don’t forget follow us !!
+                        </h5>
+                    </div>
+
+                    <div class="col-sm-8 col-md-6">
+                        <div class="footermenu">
+                            <h5 class="card-title text-white display-4" style="font-size:18px">FOOTER MENU</h5>
+                            <a class="text-light" href="#">
+                                <h6 class="card-title text-white" style="font-size:16px">Colorful</h6>
+                            </a>
+                            <a class="text-light" href="#">
+                                <h6 class="card-title text-white" style="font-size:16px">Earthtones</h6>
+                            </a>
+                            <a class="text-light" href="#">
+                                <h6 class="card-title text-white" style="font-size:16px">About us</h6>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+
 </body>
+
+</html>
+</body>
+
 </html>
 {% endblock %}
