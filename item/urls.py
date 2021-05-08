@@ -1,13 +1,11 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-#from .views import *
 from item import views
 from .views import *
 urlpatterns = [
     path('',views.home,name='home'),
     path('Aboutus',views.Aboutus,name='aboutus'),
-    # path('Colorful',views.Colourful,name='colourful'),
     path('Colorful',views.Colourful,name='colourful'),
     path('Earthtone',views.Earthtone,name='earthtone'),
     path('Random',views.Random,name='random'),

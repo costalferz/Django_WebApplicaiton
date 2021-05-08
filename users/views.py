@@ -26,11 +26,8 @@ def Loginform(request):
                 messages.info(request,"Please Login Again.") 
                 return redirect('/Login')
         else:
-
-            messages.info(request,"They used username: {} and password: {}".format(username, password)) 
-            print("They used username: {}".format(username))
+            messages.info(request,"Please Try to Login Again ") 
             return redirect('/Login')
-            #HttpResponse('Login.html')
             
     else:
         return render(request, 'Login.html')

@@ -22,12 +22,12 @@
 </head>
 <body>
     {%if messages%}
-    <div>
+    <div class="alert alert-danger" role="alert">
         {% for message in messages %}
-            <h4 style="color: red;">{{message}}</h4>
+        {{message}}
         {%endfor%}
-    </div>
-    {%endif%}
+      </div>
+      {%endif%}
     <div class="row" style="padding: 0px;margin: 0px;">
         <div class="col-md" style="text-align: center;">
             <img class="indexImage" src="{% static 'img/1.jpg' %}"> 

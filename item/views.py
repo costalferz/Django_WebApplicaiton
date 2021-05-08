@@ -13,41 +13,21 @@ def home(request):
 
 def Aboutus(request):
     return render(request,'Aboutus.html')
-# class Colourful(ListView):
-#     template_name = 'Colourful.html'
-#     model = models.Item
-#     def get_queryset(self):
-#         queryset = super(Colourful, self).get_queryset()
-#         return queryset.all().order_by('-id')[:9]
-    # def get_queryset(self):
-    #     ItemColourful = Item.objects.get(id__exact=1)
-    #     #queryset = super(Colourful, self).get_queryset()
 
-    #     return ItemColourful.all().order_by('-id')[:9]
 
 def Colourful(request):
-    #Item_colour = Item.objects.all().order_by('-id')
     some_colour = Category.objects.get(category="Colourful")
-    Item_colour = Item.objects.all().filter(category=some_colour)
+    Item_colour = Item.objects.all().filter(category=some_colour).order_by('-name')
     context = {'Item_co': Item_colour}
-
     return render(request,'Colourful.html',context)
 
 def Earthtone(request):
     some_Earthtones = Category.objects.get(category="Earthtones")
-    Item_Earthtones = Item.objects.all().filter(category=some_Earthtones)
+    Item_Earthtones = Item.objects.all().filter(category=some_Earthtones).order_by('-name')
     context = {'Item_Earth': Item_Earthtones}
     return render(request,'EarthTone.html',context=context)
 
-# class Earthtone(ListView):
-#     template_name = 'EarthTone.html'
-#     model = Item
-#     def get_queryset(self):
-#         queryset = super(Earthtone, self).get_queryset()
-#         return queryset.all().order_by('-id')[:9]
-
 def Random(request):
-    model = Item
     return render(request,'Random.html')
 
 def OpenEarthtone(request):
@@ -60,9 +40,10 @@ def OpenColourful(request):
 def RandomTone(request):
     template_name = 'index.html'
     model = Item
-    Tone = Item.objects.filter(id)
 
 
+def Detail(request):
+    return render(request,'Detail.html')
 
 class SearchItemListView(ListView):
     template_name = "Colourful.html"
