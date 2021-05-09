@@ -1,0 +1,359 @@
+/* @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'); */
+
+
+/*---------------------navbar---------------------*/
+
+.logo img {
+    margin-top: 1.2px;
+    padding: 0px;
+    height: 60px;
+    padding-left: 30px;
+}
+
+.navbar-mainbg {
+    width: 100%;
+    background-color: #F4A8A8;
+    padding: 0px;
+}
+
+#navbarSupportedContent {
+    overflow: hidden;
+    position: relative;
+}
+
+#navbarSupportedContent ul li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    padding: 20px 20px;
+    position: relative;
+}
+
+#navbarSupportedContent ul li a:hover {
+    color: rgb(65, 65, 66);
+}
+
+
+/*---------------- Search bar-------------------*/
+
+.search-box {
+    position: relative;
+    height: 34px;
+    margin-right: 20px;
+}
+
+.search-box input {
+    border: 0;
+    border-radius: 3px !important;
+    padding-right: 40px;
+    font-size: 15px;
+}
+
+.search-box .input-group-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+}
+
+.search-box .input-group-btn button {
+    background-color: transparent;
+    border: 0;
+    padding: 4px 8px;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .search-box {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    .search-box input {
+        margin-left: 25px !important;
+        margin-right: 25px;
+    }
+    .search-box .input-group-btn button {
+        margin-left: -65px;
+    }
+}
+
+
+/*------------- dropdown--------------------*/
+
+.navbar .dropdown-toggle,
+.navbar .dropdown-menu a {
+    cursor: pointer;
+    background-color: hsl(0, 78%, 81%);
+    border-radius: 10px;
+}
+
+.navbar .dropdown-item.active,
+.navbar .dropdown-item:active {
+    color: inherit;
+    text-decoration: none;
+    background-color: inherit;
+}
+
+.navbar .dropdown-item:focus,
+.navbar .dropdown-item:hover {
+    color: #f4A8a8;
+    text-decoration: none;
+    background-color: #F4A8A8;
+}
+
+
+/*-------------responsive navbar--------------------*/
+
+@media(min-width: 992px) {
+    .navbar-expand-custom {
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .navbar-expand-custom .navbar-nav {
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+    .navbar-expand-custom .navbar-toggler {
+        display: none;
+    }
+    .navbar-expand-custom .navbar-collapse {
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 991px) {
+    #navbarSupportedContent ul li a {
+        padding: 12px 30px;
+    }
+    .hori-selector {
+        margin-top: 0px;
+        margin-left: 10px;
+        border-radius: 0;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+    }
+    .hori-selector .left,
+    .hori-selector .right {
+        right: 10px;
+    }
+    .hori-selector .left {
+        top: -25px;
+        left: auto;
+    }
+    .hori-selector .right {
+        bottom: -25px;
+    }
+    .hori-selector .left:before {
+        left: -25px;
+        top: -25px;
+    }
+    .hori-selector .right:before {
+        bottom: -25px;
+        left: -25px;
+    }
+}
+
+
+/*------------------------------------*/
+
+
+/*table*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.middle {
+    background: white;
+    max-width: 360px;
+    margin: 0 auto;
+    height: auto;
+    padding: 35px;
+    padding-top: 50px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.payment h1 {
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    color: #F4A8A8;
+    font-weight: bolder;
+}
+
+.form .label {
+    display: block;
+    color: #555555;
+    margin-bottom: 5px;
+}
+
+th,
+td {
+    max-width: 300px;
+    padding: 0 auto;
+    height: auto;
+    padding: 35px;
+    padding-top: 50px;
+}
+
+@media screen and (max-width: 420px) {
+    .payment h1 {
+        font-size: 30px;
+    }
+    .card-grp {
+        flex-direction: column;
+    }
+    .card-item {
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+    .btn {
+        margin-top: 20px;
+    }
+}
+
+.yoyo {
+    background: #555555;
+    padding: 10%;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 35%;
+}
+
+.btn-2 {
+    background: #F7D07A;
+    padding: 10px;
+    text-align: center;
+    color: slategrey;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2px;
+    width: 75%;
+    margin-left: 5%;
+    margin-top: 30%;
+}
+
+.btn-2:hover {
+    color: white;
+}
+
+.btn-3 {
+    background: #F7D07A;
+    padding: 10px;
+    text-align: center;
+    color: slategrey;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2px;
+    width: 75%;
+    margin-left: 5%;
+    margin-top: 5px;
+}
+
+.btn-3:hover {
+    color: white;
+}
+
+.img-user {
+    width: 90px;
+    height: 87px;
+    margin-top: 30%;
+    margin-left: 50%;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 35px;
+    height: auto;
+    padding-top: 50px;
+    font-size: 0.9em;
+    box-shadow: -1px 12px 12px -6px rgba(0, 0, 0, 0.5);
+    position: relative;
+    margin-top: 10%;
+}
+
+table,
+td,
+th {
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #F4A8A8;
+    color: #EEE8EF;
+}
+
+
+/*footer*/
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+footer a.text-light:hover {
+    color: hsl(0, 78%, 81%) !important;
+}
+
+footer .cizgi {
+    border-right: 1px solid #535e67;
+}
+
+.row h6 {
+    color: white;
+}
+
+.row h5 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.row button {
+    color: white;
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.row button:hover {
+    color: #F4A8A8;
+}
+
+.footermenu {
+    margin-left: 75%;
+}
+
+.footermenu h5 {
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .footermenu {
+        text-align: center;
+        margin-left: 0%;
+    }
+}
+
+@media (min-width: 992px) {
+    footer .cizgi {
+        border-right: none;
+    }
+}
+
+
+/*-----------------------------------*/
