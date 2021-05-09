@@ -28,7 +28,7 @@ SECRET_KEY = 'o&zlqwpa62qv#mq6h%d2t(xykwdodn6cxdf6*#u3_@0=aik1k$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://elon-webapp.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
