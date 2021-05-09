@@ -56,6 +56,7 @@ def register(request):
                 email=email,)
                 new_user.save()
                 auth.login(request,new_user)
+                messages.info(request,"Login Sucessful.")
                 return redirect('/')
         else:
             messages.info(request,"password doesn't match")

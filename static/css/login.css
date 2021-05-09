@@ -149,8 +149,7 @@ left: -25px;
 .login {
     width: 280px;
     margin-left: 50%;
-	  padding-top: 70%;
-    transform: translate(-50%,-50%);
+    padding-bottom: 60%;
     color:black;
     font-family: 'Roboto', sans-serif;
     align-items: center;
@@ -169,7 +168,7 @@ left: -25px;
 
 .textbox{
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
     padding: 8px 0px;
     margin: 8px 0px;
 }
@@ -206,7 +205,7 @@ left: -25px;
     float: left;
     margin: 0 10px;
     height: 47px;
-    width: 250px;
+    width: 100%;
     border-radius: 5px;
     padding-left: 8px;
 }
@@ -220,34 +219,35 @@ left: -25px;
 	color: black;
 	border-radius: 5px;
 	cursor: pointer;
-	margin-left: 36%;
+	margin-left: 40%;
 }
 
-.login {
-	margin-top: 20%;
-	padding-left: 45%;
-}
 
-@media screen and (max-width: 420px){
+@media screen and (max-width: 768px){
 .loginpic{
 	margin-top: -20%;
 	margin-left: 40px;
 }
 .textbox h3{
 	font-size: 18px;
-
+    text-align: left;
 }
 .btnnn{
 	margin-top: 20px;
 }
 .login{
-	padding-left: 2%;
+    width: 100%;
+    margin-left: 0%;
+}
+.textbox{
+    padding: 20px;
+    padding-right: 40px;
 }
 }
 
 @media screen and (min-width: 768px){
 .loginpic img{
-	margin-left: 5%;
+  margin-top: 60%;
   width: 100%;
   height: auto;
 }
@@ -255,15 +255,18 @@ left: -25px;
 	font-size: 20px;
 }
 .login{
-	margin-left: 30%;
-	margin-top: 30%;
+	margin-left: 15%;
+	margin-top: 25%;
 }
 }
 
 @media screen and (min-width: 992px){
 .loginpic img{
-	margin-left: -20%;
+	margin-left: -10%;
 	margin-top: 40%;
+}
+.login{
+    margin-left: 40%
 }
 }
 
