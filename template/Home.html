@@ -60,7 +60,7 @@
         {% endif %}
       </ul>
 
-      <form class="form-inline ">
+      <form class="form-inline " method="GET">
         <div class="input-group search-box">
           <input type="text" style="margin-left: 12px; text-shadow: #535e67 2px;" class="form-control"
             placeholder="Search" required="required" name="q">
@@ -76,7 +76,7 @@
   <div class="alert alert-success" role="alert">
       {% for message in messages %}
       {{message}}
-      {%end for%}
+      {% endfor %}
     </div>
     {%endif%}
 

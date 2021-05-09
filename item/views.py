@@ -37,13 +37,30 @@ def OpenColourful(request):
     return render(request,'OpenColourful.html')
 
 
-def RandomTone(request):
-    template_name = 'index.html'
-    model = Item
+# def RandomTone(request):
+#     template_name = 'index.html'
+#     model = Item
 
 
 def Detail(request):
+    context = {}
     return render(request,'Detail.html')
+
+def tracking(request):
+    context = {}
+    return render(request,'Tracking.html')
+
+def newpass(request):
+    context = {}
+    return render(request,'Newpass.html') 
+
+def accountprofile(request):
+    context = {}
+    return render(request,'Account Profile.html') 
+
+def address (request):
+    context = {}
+    return render(request,'Address.html') 
 
 class SearchItemListView(ListView):
     template_name = "Colourful.html"

@@ -21,6 +21,7 @@ def Loginform(request):
         if user:
             if user.is_active:
                 login(request, user)
+                messages.info(request,"Login Sucuessful") 
                 return HttpResponseRedirect(reverse('home'))
             else:
                 messages.info(request,"Please Login Again.") 
