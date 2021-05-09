@@ -1,0 +1,1 @@
+web: gunicorn elon.wsgi --log-file -

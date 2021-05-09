@@ -43,21 +43,33 @@ def OpenColourful(request):
 
 
 def Detail(request):
-    context = {}
+    context = {} 
     return render(request,'Detail.html')
 
+class ItemDetailView(DetailView):
+    model = Item
+    template_name = "Detail.html"
+
+    def get_success_url(self):
+        return reverse('bookDetail', kwargs={'slug': self.object.slug})
+
+
+@login_required(login_url='Login')
 def tracking(request):
     context = {}
     return render(request,'Tracking.html')
 
+@login_required(login_url='Login')
 def newpass(request):
     context = {}
     return render(request,'Newpass.html') 
 
+@login_required(login_url='Login')
 def accountprofile(request):
     context = {}
     return render(request,'Account Profile.html') 
 
+@login_required(login_url='Login')
 def address (request):
     context = {}
     return render(request,'Address.html') 
