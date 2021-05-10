@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'o&zlqwpa62qv#mq6h%d2t(xykwdodn6cxdf6*#u3_@0=aik1k$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -132,6 +132,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile','static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+#SITE_URL = 
+SITE_ID = 2
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
