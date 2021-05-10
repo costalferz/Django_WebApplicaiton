@@ -12,8 +12,10 @@ urlpatterns = [
     path('Random',views.Random,name='random'),
     #path('product/<slug:slug>',ItemDetailView.as_view(),name='Detail'),
     path('ProductDetail' , views.Detail,name='Detail'),
+    
     path('Openearthtone',views.OpenEarthtone,name='openearthtone'),
-    path('Opencolourful',views.OpenColourful,name='opencolurful'),
+    path('Opencolourful',views.OpenColourful,name='opencolourful'),
+
     path('tracking',views.tracking,),
     path('newpass',views.newpass,),
     path('accountprofile',views.accountprofile,),

@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,reverse
 import random
+from django.contrib import *
 from django.db.models import Count
 from django.contrib.auth.models import User
 from django.views.generic import (DetailView,FormView,ListView,TemplateView,UpdateView)
@@ -30,11 +31,13 @@ def Earthtone(request):
 def Random(request):
 
     return render(request,'Random.html')
-
+type = ""
 def OpenEarthtone(request):
+    type = "Earthtone"
     return render(request,'OpenEarthtone.html')
 
 def OpenColourful(request):
+    type = "Colourful"
     return render(request,'OpenColourful.html')
 
 
@@ -42,14 +45,25 @@ def OpenColourful(request):
 #     template_name = 'index.html'
 #     model = Item
 
-
 def Detail(request):
-    some_Earthtones = Category.objects.get(category="Earthtones")
-    Item_Earthtones = list(Item.objects.all().filter(category=some_Earthtones))
-    randomItemE = random.sample(Item_Earthtones,1)
-    context = {'Item_Earth': randomItemE}
-    return render(request,'Detail.html',context=context)
-
+    type=request.GET['type']
+    if request.user.is_authenticated:
+        if type == "Earthtones":
+            some_Earthtones = Category.objects.get(category="Earthtones")
+            Item_Earthtones = list(Item.objects.all().filter(category=some_Earthtones))
+            randomItemE = random.sample(Item_Earthtones,1)
+            context = {'Item': randomItemE}
+        elif type == "Colourful":
+            some_Colourful = Category.objects.get(category="Colourful")
+            Item_Colourful = list(Item.objects.all().filter(category=some_Colourful))
+            randomItemC = random.sample(Item_Colourful,1)
+            context = {'Item': randomItemC}
+        type = ""
+        return render(request,'Detail.html',context=context)
+    else:
+        messages.info(request,"Login Before Random please") 
+        return redirect('/Login')
+        
 # class ItemDetailView(DetailView):
 #     model = Item
 #     template_name = "Detail.html"
