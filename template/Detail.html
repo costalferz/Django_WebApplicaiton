@@ -20,19 +20,22 @@
 <!---------------content-------------------------->
 <div class="container-fluid">
     <div class="row">
+        {% for item in Item_Earth%}
         <div class="col-sm-6">
             <div class="left-column">
-                <img src="img/detail_pic.jpg"></img>
+                <img src="{{ item.img.url }}" width="auto" height="auto"></img>
             </div>
         </div>
 
         <div class="col-sm-6">
             <div class="right-column">
                 <div class="product-description">
-                    <h1>BROWN TANK CROP</h1>
-                    <p>"This will crop take you back in 90's"<br><span>#croptop #vintage #earthtone #90s</span><br>PRICE 1,200 ฿</p>
+                    <h1>{{ item.name }}</h1>
+                    <p>{{ item.detail }}<br>
+                    <span>{{ item.hashtag }}</span><br>
+                    ฿ {{ item.price }}</p>
                 </div>
-
+                {% endfor %}     
                 <div class="product-price">
                     <a href="#" class="continue-btn">CONTINUE</a> <!--# คือ link ไปหน้า payment-->
                 </div>

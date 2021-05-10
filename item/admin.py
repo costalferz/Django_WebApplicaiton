@@ -4,7 +4,7 @@ from .models import Item,Category,itemHistory,Payment
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('id','name','category', 'detail','amount','price')
-    fields = ('name','category', 'detail','amount','price','img')
+    fields = ('name','category', 'detail','hashtag','amount','price','img')
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

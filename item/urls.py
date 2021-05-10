@@ -1,3 +1,4 @@
+from os import name
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
@@ -9,6 +10,8 @@ urlpatterns = [
     path('Colourful',views.Colourful,name='colourful'),
     path('Earthtone',views.Earthtone,name='earthtone'),
     path('Random',views.Random,name='random'),
+    #path('product/<slug:slug>',ItemDetailView.as_view(),name='Detail'),
+    path('ProductDetail' , views.Detail,name='Detail'),
     path('Openearthtone',views.OpenEarthtone,name='openearthtone'),
     path('Opencolourful',views.OpenColourful,name='opencolurful'),
     path('tracking',views.tracking,),

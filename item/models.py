@@ -27,6 +27,10 @@ class Item(models.Model):
     amount = models.PositiveIntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.PROTECT,default=None)
     price = models.PositiveIntegerField(default=0)
+    hashtag = models.TextField(max_length=100,default=None)
+    
+    def __str__(self):
+        return self.name
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

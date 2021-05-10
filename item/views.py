@@ -28,6 +28,7 @@ def Earthtone(request):
     return render(request,'EarthTone.html',context=context)
 
 def Random(request):
+
     return render(request,'Random.html')
 
 def OpenEarthtone(request):
@@ -43,15 +44,18 @@ def OpenColourful(request):
 
 
 def Detail(request):
-    context = {} 
-    return render(request,'Detail.html')
+    some_Earthtones = Category.objects.get(category="Earthtones")
+    Item_Earthtones = list(Item.objects.all().filter(category=some_Earthtones))
+    randomItemE = random.sample(Item_Earthtones,1)
+    context = {'Item_Earth': randomItemE}
+    return render(request,'Detail.html',context=context)
 
-class ItemDetailView(DetailView):
-    model = Item
-    template_name = "Detail.html"
+# class ItemDetailView(DetailView):
+#     model = Item
+#     template_name = "Detail.html"
 
-    def get_success_url(self):
-        return reverse('bookDetail', kwargs={'slug': self.object.slug})
+#     def get_success_url(self):
+#         return reverse('Detail', kwargs={'slug': self.object.slug})
 
 
 @login_required(login_url='Login')
