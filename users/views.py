@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ( CreateView, FormView, TemplateView)
-
+from django.contrib.auth.decorators import login_required
 from .form import UserRegisterForm
 # Create your views here.
 
@@ -33,7 +33,7 @@ def Loginform(request):
     else:
         return render(request, 'Login.html')
 
-def logout_view(request):
+def Logout_view(request):
     auth.logout(request)
     return render(request, 'Login.html')
 
@@ -65,6 +65,36 @@ def register(request):
     else:
         return render(request, 'Signup.html')
 
+@login_required(login_url='Login')
+def Myorder(request):
+    context = {}
+    return render(request,'Myorder.html')
+
+@login_required(login_url='Login')
+def Newpass(request):
+
+    if request.method == "POST":
+        password=request.POST['password']
+        repassword=request.POST['repassword']
+        if password==repassword:
+            pass
+        else:
+            messages.info(request,"password doesn't match") 
+    return render(request,'Newpass.html') 
+
+@login_required(login_url='Login')
+def Accountprofile(request):
+    context = {}
+    return render(request,'Account Profile.html') 
+
+@login_required(login_url='Login')
+def Address (request):
+    context = {}
+    return render(request,'Address.html') 
+
+@login_required(login_url='Login')
+def UpdateProfile(request):
+    return render(request,'UpdateProfile.html')
     #resetpassword
 # def change_password2(request, user_username):
 #     var_username =  get_object_or_404(User, username=user_username)

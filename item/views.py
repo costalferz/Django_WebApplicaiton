@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect,reverse
 import random
 from django.contrib import *
-from django.db.models import Count
 from django.contrib.auth.models import User
 from django.views.generic import (DetailView,FormView,ListView,TemplateView,UpdateView)
 from django.contrib.auth.decorators import login_required
@@ -67,34 +66,6 @@ def Detail(request):
 def Payment(request):
     return render(request,'Payment.html')
 
-
-
-@login_required(login_url='Login')
-def tracking(request):
-    context = {}
-    return render(request,'Tracking.html')
-
-@login_required(login_url='Login')
-def newpass(request):
-
-    if request.method == "POST":
-        password=request.POST['password']
-        repassword=request.POST['repassword']
-        if password==repassword:
-            pass
-        else:
-            messages.info(request,"password doesn't match") 
-    return render(request,'Newpass.html') 
-
-@login_required(login_url='Login')
-def accountprofile(request):
-    context = {}
-    return render(request,'Account Profile.html') 
-
-@login_required(login_url='Login')
-def address (request):
-    context = {}
-    return render(request,'Address.html') 
 
 class SearchItemListView(ListView):
     template_name = "Colourful.html"

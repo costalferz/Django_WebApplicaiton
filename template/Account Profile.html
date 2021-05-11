@@ -82,15 +82,15 @@
                     <a class="nav-link dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">MY ACCOUNT</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown2">
-                        <li class="dropdown-item" href="#"><a>My Order</a></li>
-                        <li class="dropdown-item" href="#"><a>Account Profile</a></li>
-                        <li class="dropdown-item" href="#"><a>Address</a></li>
-                        <li class="dropdown-item" href="#"><a>Change Password</a></li>
+                        <li class="dropdown-item" ><a href="/Myorder" >My Order</a></li>
+                        <li class="dropdown-item"><a href ="/Accountprofile">Account Profile</a></li>
+                        <li class="dropdown-item"> <a href="/Address">Address  </a></li>
+                        <li class="dropdown-item"> <a href="/Newpass"> Change Password  </a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">LOGOUT</a>
+                    <a class="nav-link" href="/Logout">LOGOUT</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
@@ -135,11 +135,11 @@
 
                                     <div class="col-6 ">
                                         <div class="btn-2" style="font-size: 12px;">
-                                            USERSNAME
+                                            {{ user.username }}
                                         </div>
-                                        <div class="btn-3" style="font-size: 12px;">
+                                        <a href="/UpdateProfile"><div class="btn-3" style="font-size: 12px;">
                                             EDIT PROFILE
-                                        </div>
+                                        </div></a>
                                     </div>
                                 </div>
 
@@ -149,10 +149,10 @@
                         <div class="col-12">
                             <div class="middle d-none d-lg-block">
                                 <div class="group">
-                                    <button type="button"><a href="/tracking">My Order</a></button>
-                                    <button type="button"><a href="/accountprofile">Account Profile</a></button>
-                                    <button type="button"><a href="/address">Address</a></button>
-                                    <button type="button"><a href="/newpass">Change Password</a></button>
+                                    <button type="button"><a href="/Myorder">My Order</a></button>
+                                    <button type="button"><a href="/Accountprofile">Account Profile</a></button>
+                                    <button type="button"><a href="/Address">Address</a></button>
+                                    <button type="button"><a href="/Newpass">Change Password</a></button>
                                 </div>
                             </div>
                         </div>
@@ -191,51 +191,48 @@
 
     <footer>
         <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-lg-0">
-                        <h6 class="text-uppercase font-weight-bold mb-4">NEWSLETTER SIGNUP</h6>
-                        <div class="p-1 rounded border">
-                            <div class="input-group">
-                                <input type="email" placeholder="Enter your email address"
-                                    aria-describedby="button-addon1" class="form-control border-0 shadow-0">
-                                <div class="input-group-append icon-relative">
-                                    <button id="button-addon1" type="submit" class="btn btn-link"><i
-                                            class="fa fa-paper-plane"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <h5 class="card-title text-white display-4" style="font-size:16px">SOCIAL LINKS</h5>
-
-                        <a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
-
-                        <a class="text-light icon-relative" href="#"><i
-                                class="icon-relative fab fa-twitter-square fa-fw fa-2x"></i></a>
-
-                        <a class="text-light icon-relative" href="#"><i
-                                class="icon-relative fab fa-instagram fa-fw fa-2x"></i></a>
-
-                        <h5 class="card-title text-white display-4" style="font-size:15px">Don’t forget follow us !!
-                        </h5>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">NEWSLETTER SIGNUP</h6>
+                <div class="p-1 rounded border">
+                  <div class="input-group">
+                    <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1"
+                      class="form-control border-0 shadow-0">
+                    <div class="input-group-append">
+                      <button id="button-addon1" type="submit" class="btn btn-link"><i
+                          class="fa fa-paper-plane"></i></button>
                     </div>
-
-                    <div class="col-sm-8 col-md-6">
-                        <div class="footermenu">
-                            <h5 class="card-title text-white display-4" style="font-size:18px">FOOTER MENU</h5>
-                            <a class="text-light" href="#">
-                                <h6 class="card-title text-white" style="font-size:16px">Colorful</h6>
-                            </a>
-                            <a class="text-light" href="#">
-                                <h6 class="card-title text-white" style="font-size:16px">Earthtones</h6>
-                            </a>
-                            <a class="text-light" href="#">
-                                <h6 class="card-title text-white" style="font-size:16px">About us</h6>
-                            </a>
-
-                        </div>
-                    </div>
+                  </div>
                 </div>
+                <h5 class="card-title text-white display-4" style="font-size:16px">SOCIAL LINKS</h5>
+    
+                <a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
+    
+                <a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
+    
+                <a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
+    
+                <h5 class="card-title text-white display-4" style="font-size:15px">Don’t forget follow us !!</h5>
+              </div>
+    
+              <div class="col-sm-8 col-md-6">
+                <div class="footermenu">
+                  <h5 class="card-title text-white display-4" style="font-size:18px">FOOTER MENU</h5>
+                  <a class="text-light" href="/Colourful">
+                    <h6 class="card-title text-white" style="font-size:16px">Colourful</h6>
+                  </a>
+                  <a class="text-light" href="/Earthtone">
+                    <h6 class="card-title text-white" style="font-size:16px">Earthtones</h6>
+                  </a>
+                  <a class="text-light" href="/Aboutus">
+                    <h6 class="card-title text-white" style="font-size:16px">About us</h6>
+                  </a>
+    
+                </div>
+              </div>
             </div>
+          </div>
         </div>
         </div>
     </footer>

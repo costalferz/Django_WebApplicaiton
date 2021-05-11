@@ -1,5 +1,5 @@
+{% extends "1Navbar.html" %}
 {% load static %}
-{% extends "2Navbar.html" %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -23,63 +23,19 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-custom navbar-mainbg">
-		<a class="logo" href="#"><img src="https://media.discordapp.net/attachments/821058393442877482/835167645514727454/image0.png?width=1363&height=613" alt=""></a>
-		
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<i class="fas fa-bars text-white"></i>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-			
-
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item ">
-					<a class="nav-link" href="#">COLORFUL</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="#">EARTH TONES</a>
-				</li>
-
-				<li class="nav-item ">
-					<a class="nav-link" href="#">ABOUT US</a>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="#">LOGIN</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">REGISTER</a>
-				</li>
-			</ul>
-
-			<form class="form-inline">
-				<div class="input-group search-box">
-					<input type="text" style="margin-left: 12px; text-shadow: #535e67 2px;" class="form-control" placeholder="Search">
-					<span class="input-group-btn">
-						<button class="btn" style="color: #F4A8A8;" type="submit"><i class="fas fa-search"></i></button>
-					</span>
-				</div>
-			</form>
-
-			
-				
-		</div>
-	</nav>
 
 	<div class="row" style="padding: 0px;margin: 0px;">
 		<div class="col-md" style="text-align: center;">
-			<img class="indexImage" src="img/2.jpg"> 
+			<img class="indexImage" src="{% static 'img/2.jpg' %}"> 
 		</div>
 		<div class="col-md" style="text-align: center;">
 			<div class="mainContent">
-				<form name="form1" enctype="multipart/form-data" method="post" action="">
-					<input  type="file" name="fileField" id="fileField">
+				<form name="form1" enctype="multipart/form-data" method="POST" action="">
+					{% csrf_token %}
+					<input  type="file" name="fileField" id="fileField" name= "image">
 					<br>
-					<input type="submit" class="button" name="button" id="button_ok" value="OKAY">
-					<input type="submit" class="button" name="button2" id="button_cancel" value="CANCEL">
+					<input type="submit" class="button" name="button" id="button_ok" value="Upload">
+					<a href="/Myorder"><input type="button" class="button" " id="button_cancel" value="Cancel"></a>
 				</form>
 			</div>
 		</div>
@@ -88,39 +44,49 @@
 	<!-------------------footer------------------------->
 	<footer>
 		<div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4 col-md-6 mb-lg-0">
-						<h6 class="text-uppercase font-weight-bold mb-4">NEWSLETTER SIGNUP</h6>
-						<div class="p-1 rounded border">
-							<div class="input-group">
-							<input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
-							<div class="input-group-append icon-relative">
-								<button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
-							</div>
-							</div>
-						</div>
-						<h5 class="card-title text-white display-4" style="font-size:16px">SOCIAL LINKS</h5>
-					
-						<a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
-							
-						<a class="text-light icon-relative" href="#"><i class="icon-relative fab fa-twitter-square fa-fw fa-2x"></i></a>
-							
-						<a class="text-light icon-relative" href="#"><i class="icon-relative fab fa-instagram fa-fw fa-2x"></i></a>
-								
-						<h5 class="card-title text-white display-4" style="font-size:15px">Don’t forget follow us !!</h5>
+		  <div class="container">
+			<div class="row">
+			  <div class="col-lg-4 col-md-6 mb-lg-0">
+				<h6 class="text-uppercase font-weight-bold mb-4">NEWSLETTER SIGNUP</h6>
+				<div class="p-1 rounded border">
+				  <div class="input-group">
+					<input type="email" placeholder="Enter your email address" aria-describedby="button-addon1"
+					  class="form-control border-0 shadow-0">
+					<div class="input-group-append">
+					  <button id="button-addon1" type="submit" class="btn btn-link"><i
+						  class="fa fa-paper-plane"></i></button>
 					</div>
-					
-					<div class="col-sm-8 col-md-6">
-						<div class="footermenu">
-							<h5 class="card-title text-white display-4" style="font-size:18px">FOOTER MENU</h5>
-							<a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">Colorful</h6></a>
-							<a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">Earthtones</h6></a>
-							<a class="text-light" href="#"><h6 class="card-title text-white" style="font-size:16px">About us</h6></a>
-						</div>
-					</div>	
+				  </div>
 				</div>
+				<h5 class="card-title text-white display-4" style="font-size:16px">SOCIAL LINKS</h5>
+	
+				<a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
+	
+				<a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
+	
+				<a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
+	
+				<h5 class="card-title text-white display-4" style="font-size:15px">Don’t forget follow us !!</h5>
+			  </div>
+	
+			  <div class="col-sm-8 col-md-6">
+				<div class="footermenu">
+				  <h5 class="card-title text-white display-4" style="font-size:18px">FOOTER MENU</h5>
+				  <a class="text-light" href="/Colourful">
+					<h6 class="card-title text-white" style="font-size:16px">Colourful</h6>
+				  </a>
+				  <a class="text-light" href="/Earthtone">
+					<h6 class="card-title text-white" style="font-size:16px">Earthtones</h6>
+				  </a>
+				  <a class="text-light" href="/Aboutus">
+					<h6 class="card-title text-white" style="font-size:16px">About us</h6>
+				  </a>
+	
+				</div>
+			  </div>
 			</div>
+		  </div>
+		</div>
 		</div>
 	</footer>
 
