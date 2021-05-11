@@ -30,14 +30,13 @@ def Earthtone(request):
 
 def Random(request):
     return render(request,'Random.html')
-def OpenEarthtone(request):
-    #open แก้หน้าเดียว
-    tone = request.GET['tone']
 
-    return render(request,'OpenEarthtone.html')
-
-def OpenColourful(request):
-    return render(request,'OpenColourful.html')
+def Open(request):
+    c = request.GET['Tone']
+    if c == "Earthtones":
+        return render(request,'OpenEarthtone.html')
+    elif c == "Colourful":
+        return render(request,'OpenColourful.html')
 
 def Detail(request):
     type=request.GET['type']
