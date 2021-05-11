@@ -69,8 +69,6 @@ def Payment(request):
 
 
 
-
-
 @login_required(login_url='Login')
 def tracking(request):
     context = {}
