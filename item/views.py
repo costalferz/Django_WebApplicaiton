@@ -39,11 +39,6 @@ def OpenEarthtone(request):
 def OpenColourful(request):
     return render(request,'OpenColourful.html')
 
-
-# def RandomTone(request):
-#     template_name = 'index.html'
-#     model = Item
-
 def Detail(request):
     type=request.GET['type']
     if request.user.is_authenticated:
