@@ -63,6 +63,13 @@ def Detail(request):
 #     def get_success_url(self):
 #         return reverse('Detail', kwargs={'slug': self.object.slug})
 
+@login_required(login_url='Login')
+def Payment(request):
+    return render(request,'Payment.html')
+
+
+
+
 
 @login_required(login_url='Login')
 def tracking(request):

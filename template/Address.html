@@ -1,4 +1,4 @@
-
+{% extends "2Navbar.html" %}
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
@@ -10,6 +10,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../static/css/Account Profile.css">
+    <link rel="stylesheet" href="{% static 'css/Account Profile.css' %}">
     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.4.1.min.js" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
@@ -90,10 +91,10 @@
                         <div class="col-12">
                             <div class="middle d-none d-lg-block">
                                 <div class="group">
-                                    <button type="button"><a href="#">My Order</a></button>
-                                    <button type="button"><a href="#">Account Profile</a></button>
-                                    <button type="button"><a href="#">Address</a></button>
-                                    <button type="button"><a href="#">Change Password</a></button>
+                                    <button type="button"><a href="/tracking">My Order</a></button>
+                                    <button type="button"><a href="/accountprofile">Account Profile</a></button>
+                                    <button type="button"><a href="/address">Address</a></button>
+                                    <button type="button"><a href="/newpass">Change Password</a></button>
                                 </div>
                             </div>
                         </div>

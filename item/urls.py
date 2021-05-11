@@ -12,7 +12,7 @@ urlpatterns = [
     path('Random',views.Random,name='random'),
     #path('product/<slug:slug>',ItemDetailView.as_view(),name='Detail'),
     path('ProductDetail' , views.Detail,name='Detail'),
-    
+    path('payment' , views.Payment),
     path('Open',views.Open,name='open'),
     path('tracking',views.tracking,),
     path('newpass',views.newpass,),
