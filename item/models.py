@@ -46,8 +46,8 @@ class Item(models.Model):
         verbose_name_plural = "สินค้า"
 
 class itemHistory(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT, editable=True)
-    item = models.ForeignKey(Item, on_delete=models.PROTECT, editable=True)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, editable=False)
+    item = models.ForeignKey(Item, on_delete=models.PROTECT, editable=False)
     date = models.DateTimeField(auto_now_add=True)
     trackNum = models.CharField(max_length=15)
     class Meta:

@@ -29,15 +29,14 @@ def Earthtone(request):
     return render(request,'EarthTone.html',context=context)
 
 def Random(request):
-
     return render(request,'Random.html')
-type = ""
 def OpenEarthtone(request):
-    type = "Earthtone"
+    #open แก้หน้าเดียว
+    tone = request.GET['tone']
+
     return render(request,'OpenEarthtone.html')
 
 def OpenColourful(request):
-    type = "Colourful"
     return render(request,'OpenColourful.html')
 
 
@@ -58,7 +57,6 @@ def Detail(request):
             Item_Colourful = list(Item.objects.all().filter(category=some_Colourful))
             randomItemC = random.sample(Item_Colourful,1)
             context = {'Item': randomItemC}
-        type = ""
         return render(request,'Detail.html',context=context)
     else:
         messages.info(request,"Login Before Random please") 
@@ -79,7 +77,14 @@ def tracking(request):
 
 @login_required(login_url='Login')
 def newpass(request):
-    context = {}
+
+    if request.method == "POST":
+        password=request.POST['password']
+        repassword=request.POST['repassword']
+        if password==repassword:
+            pass
+        else:
+            messages.info(request,"password doesn't match") 
     return render(request,'Newpass.html') 
 
 @login_required(login_url='Login')

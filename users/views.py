@@ -65,19 +65,18 @@ def register(request):
     else:
         return render(request, 'Signup.html')
 
+    #resetpassword
+# def change_password2(request, user_username):
+#     var_username =  get_object_or_404(User, username=user_username)
+# #getting username from url
 
+#     u = User.objects.get(username__exact=var_username)
 
-# def Loginform(request):
-#     username = request.POST['username']
-#     password = request.POST['password']
-#     #check username, password
-#     user = authenticate(username=username,password=password)
-    
-#     if user is not None:
-#         auth.login(request,user)
-#         return redirect('home')
-#     else:
-#         messages.info(request,"Doesn't Match Any Username or Password")
-#         return redirect('Login.html')
+#     password = request.POST.get('password_update', False)
+#     u.set_password(password)
+#     b = u.save()
 
-
+#     update_session_auth_hash(request, b)  
+#     messages.success(request, 'Your password was successfully updated!')
+#     # return redirect('change_password')
+#     return render(request, 'accounts/change_password2.html')
