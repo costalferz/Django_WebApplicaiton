@@ -62,7 +62,8 @@ def Detail(request):
 @login_required(login_url='Login')
 def Payment(request):
     if request.method == "POST":
-        pass
+        return redirect('/')
+
     return render(request,'Payment.html')
 
 
