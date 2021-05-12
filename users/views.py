@@ -86,7 +86,7 @@ def Newpass(request):
             return redirect('/Myorder')
         else:
             messages.info(request,"password doesn't match") 
-    return render(request,'Newpass.html') 
+    return render(request,'New-pass.html') 
 
 @login_required(login_url='Login')
 def Accountprofile(request):
