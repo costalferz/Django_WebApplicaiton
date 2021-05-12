@@ -61,7 +61,14 @@ def Detail(request):
 
 @login_required(login_url='Login')
 def Payment(request):
+    
     if request.method == "POST":
+    
+        name = request.POST['name']
+        numcard = request.POST['numcard']
+        expire = request.POST['expire']
+        cvv = request.POST['cvv']
+        messages.info(request,"Sucessful")
         return redirect('/')
 
     return render(request,'Payment.html')

@@ -11,6 +11,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ( CreateView, FormView, TemplateView)
 from django.contrib.auth.decorators import login_required
 from .form import UserRegisterForm
+from .models import Profile
 # Create your views here.
 
 def Loginform(request):
@@ -35,7 +36,7 @@ def Loginform(request):
 
 def Logout_view(request):
     auth.logout(request)
-    return render(request, 'Login.html')
+    return redirect('/Login')
 
 def register(request):
     if request.method == "POST":
@@ -71,8 +72,7 @@ def Myorder(request):
     return render(request,'Myorder.html')
 
 @login_required(login_url='Login')
-def Newpass(request):
-
+def Newpass(request):    
     if request.method == "POST":
         password=request.POST['password']
         repassword=request.POST['repassword']
@@ -94,6 +94,8 @@ def Address (request):
 
 @login_required(login_url='Login')
 def UpdateProfile(request):
+    if request.method == "POST":
+        image = request.POST['image']
     return render(request,'UpdateProfile.html')
     #resetpassword
 # def change_password2(request, user_username):

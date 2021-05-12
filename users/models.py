@@ -3,7 +3,7 @@ from PIL import Image
 from django.contrib.auth.models import User
 
 
-class profile(models.Model):
+class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     phone_num = models.CharField(max_length=10)
     img = models.ImageField(default='default.png', upload_to='profile_pices')
