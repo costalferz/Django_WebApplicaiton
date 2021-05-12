@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
     <title>{% block title %} Reset Password {% endblock %}</title>
 </head>
@@ -131,23 +132,24 @@
 
                 <div class="wrapper">
                     <form action="" method="POST">
+                        {% csrf_token %}
 
-                   <div class="middle">
-                        <div class="mb-3 card-item icon-relative">
+                        <div class="middle">
+                            <div class="mb-3 card-item icon-relative">
                             <label for="formGroupExampleInput" class="label">New Password</label>
-                            <input type="password" class="input" id="txtPassword" name=password" value="" required>
+                            <input type="password" class="input" placeholder="Password"  name="password" value="" required>
                             <i class="fas fa-lock"></i>
-
-                        </div>
+                            </div>
 
                         <div class="mb-3 card-item icon-relative">
                             <label for="formGroupExampleInput2" class="label">Confirm Password</label>
-                            <input type="password" class="input" id="txtPassword" name="repassword" value="" required>
+                            <input type="password" class="input"  placeholder="Confirm Password" name="repassword" value="" required>
                             <i class="fas fa-check-circle"></i>
                         </div>
-                        
-                        <div class="btn-1" type="submit" > CONFIRM </div>
-                    </div>
+                        <button class="button is-warning is-active">Confirm</button>
+
+                            <!-- <span class="btn-1" name="confirm" id="confirm" type="submit"> Confirm</span> -->
+                        </div>
                     </form>
                 </div>
             </div>
@@ -235,6 +237,8 @@
         background-color: #F4A8A8;
         border: 0px #F4A8A8;
     }
+
 </style>
 </html>
+
 {% endblock content %}

@@ -22,7 +22,7 @@ def Loginform(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                request.session.set_expiry(20)
+                request.session.set_expiry(300)
                 messages.info(request,"Login Sucuessful") 
                 return HttpResponseRedirect(reverse('home'))
             else:
@@ -78,12 +78,16 @@ def Myorder(request):
 
 
 @login_required(login_url='Login')
-def Newpass(request):    
+def Newpass(request):
+    current_user = request.user
     if request.method == "POST":
         password=request.POST['password']
         repassword=request.POST['repassword']
         if password==repassword:
-            pass
+            u = User.objects.get(username=current_user)
+            u.set_password(password)
+            u.save()
+            return redirect('/Myorder')
         else:
             messages.info(request,"password doesn't match") 
     return render(request,'Newpass.html') 
