@@ -17,54 +17,58 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-        <a class="logo" href="{% url 'home' %}"><img src="https://media.discordapp.net/attachments/821058393442877482/835167645514727454/image0.png?width=1363&height=613" alt=""></a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars text-white"></i>
+        <a class="logo" href="/"><img
+            src="https://media.discordapp.net/attachments/821058393442877482/835167645514727454/image0.png?width=1363&height=613"
+            alt=""></a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars text-white"></i>
         </button>
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="{% url 'colourful' %}">COLOURFUL</a>
-                </li>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/List?category=Colourful">COLOURFUL</a>
+            </li>
     
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'earthtone' %}">EARTH TONES</a>
-                </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/List?category=Earthtones">EARTH TONES</a>
+            </li>
     
-                <li class="nav-item ">
-                    <a class="nav-link" href="{% url 'aboutus' %}">ABOUT US</a>
-                </li>
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/Myorder">ACCOUNT({{ user.username }})</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Logout">LOGOUT</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'Login' %}">LOGIN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'Register' %}">REGISTER</a>
-                </li>
-                {% endif %}
-            </ul>
+            <li class="nav-item ">
+              <a class="nav-link" href="/Aboutus">ABOUT US</a>
+            </li>
     
-            <form class="form-inline " method="GET">
-                <div class="input-group search-box">
-                    <input type="text" style="margin-left: 12px; text-shadow: #535e67 2px;" class="form-control" placeholder="Search"
-                    required="required" name="q">
-                    <span class="input-group-btn">
-                        <button class="btn" style="color: #F4A8A8;" type="submit"><i class="fas fa-search"></i></button>
-                    </span>
-                </div>
-            </form>    
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/Myorder">ACCOUNT({{ user.username }})</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Logout">LOGOUT</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/Login">LOGIN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Register">REGISTER</a>
+            </li>
+            {% endif %}
+          </ul>
+    
+          <form class="form-inline " method="GET">
+            <div class="input-group search-box">
+              <input type="text" style="margin-left: 12px; text-shadow: #535e67 2px;" class="form-control"
+                placeholder="Search" required="required" name="q">
+              <span class="input-group-btn">
+                <button class="btn" style="color: #F4A8A8;" type="submit"><i class="fas fa-search"></i></button>
+              </span>
+            </div>
+          </form>
         </div>
-    </nav>
+      </nav>
     {% block content %}
     {% endblock content %}
 </body>

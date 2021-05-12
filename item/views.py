@@ -14,27 +14,30 @@ def home(request):
 def Aboutus(request):
     return render(request,'Aboutus.html')
 
-
-def Colourful(request):
-    some_colour = Category.objects.get(category="Colourful")
-    Item_colour = Item.objects.all().filter(category=some_colour).order_by('-name')
-    context = {'Item_co': Item_colour}
-    return render(request,'Colourful.html',context)
-
-def Earthtone(request):
-    some_Earthtones = Category.objects.get(category="Earthtones")
-    Item_Earthtones = Item.objects.all().filter(category=some_Earthtones).order_by('-name')
-    context = {'Item_Earth': Item_Earthtones}
-    return render(request,'EarthTone.html',context=context)
+def Listitem(request):
+    cat = request.GET['category']
+    if cat == "Colourful":
+        title = "COLOURFUL"
+        some_colour = Category.objects.get(category="Colourful")
+        Item_colour = Item.objects.all().filter(category=some_colour).order_by('-name')
+        context = {'Item': Item_colour,'title' : title}   
+ 
+    else:
+        title = "EARTH TONES"
+        some_Earthtones = Category.objects.get(category="Earthtones")
+        Item_Earthtones = Item.objects.all().filter(category=some_Earthtones).order_by('-name')
+        context = {'Item': Item_Earthtones,'title' : title}
+        
+    return render(request,'Category.html',context=context)
 
 def Random(request):
     return render(request,'Random.html')
 
 def Open(request):
-    c = request.GET['Tone']
-    if c == "Earthtones":
+    tone = request.GET['Tone']
+    if tone == "Earthtones":
         return render(request,'OpenEarthtone.html')
-    elif c == "Colourful":
+    elif tone == "Colourful":
         return render(request,'OpenColourful.html')
 
 def Detail(request):
@@ -55,15 +58,11 @@ def Detail(request):
         messages.info(request,"Login Before Random please") 
         return redirect('/Login')
         
-# class ItemDetailView(DetailView):
-#     model = Item
-#     template_name = "Detail.html"
-
-#     def get_success_url(self):
-#         return reverse('Detail', kwargs={'slug': self.object.slug})
 
 @login_required(login_url='Login')
 def Payment(request):
+    if request.method == "POST":
+        pass
     return render(request,'Payment.html')
 
 
@@ -79,3 +78,21 @@ class SearchItemListView(ListView):
             item_by_category = queryset.filter(category__icontains=q)
             return item_by_name | item_by_category
         return queryset
+
+
+
+
+
+
+
+
+
+
+
+
+# class ItemDetailView(DetailView):
+#     model = Item
+#     template_name = "Detail.html"
+
+#     def get_success_url(self):
+#         return reverse('Detail', kwargs={'slug': self.object.slug})
