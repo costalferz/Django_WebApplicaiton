@@ -8,7 +8,7 @@ from .views import * #Loginform,Logout_view,register
 from django.conf.urls import url
 
 urlpatterns = [
-    path('Register', views.register, name='Register'),
+    path('Register', views.Register, name='Register'),
     path('Login', views.Loginform, name='Login'),
     path('Logout',views.Logout_view),
     path('Myorder',views.Myorder,),

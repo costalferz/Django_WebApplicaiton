@@ -39,7 +39,7 @@ def Logout_view(request):
     auth.logout(request)
     return redirect('/Login')
 
-def register(request):
+def Register(request):
     if request.method == "POST":
         username=request.POST['username']
         email=request.POST['email']
