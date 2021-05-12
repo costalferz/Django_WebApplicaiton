@@ -1,4 +1,4 @@
-*.
+*.pyc
 .DS_Store
 item/__pycache__/
 item/migrations/
