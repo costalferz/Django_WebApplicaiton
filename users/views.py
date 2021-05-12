@@ -73,10 +73,6 @@ def Myorder(request):
     context = {'pro' : profile}
     return render(request,'Myorder.html',context=context,)
 
-
-
-
-
 @login_required(login_url='Login')
 def Newpass(request):
     current_user = request.user
@@ -107,18 +103,3 @@ def UpdateProfile(request):
     if request.method == "POST":
         image = request.POST['image']
     return render(request,'UpdateProfile.html')
-    #resetpassword
-# def change_password2(request, user_username):
-#     var_username =  get_object_or_404(User, username=user_username)
-# #getting username from url
-
-#     u = User.objects.get(username__exact=var_username)
-
-#     password = request.POST.get('password_update', False)
-#     u.set_password(password)
-#     b = u.save()
-
-#     update_session_auth_hash(request, b)  
-#     messages.success(request, 'Your password was successfully updated!')
-#     # return redirect('change_password')
-#     return render(request, 'accounts/change_password2.html')
