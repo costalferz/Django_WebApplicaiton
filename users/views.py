@@ -68,8 +68,10 @@ def register(request):
 
 @login_required(login_url='Login')
 def Myorder(request):
-    context = {}
-    return render(request,'Myorder.html')
+    if request.method == 'GET':
+        profile = Profile.objects.all()
+        context = {'Image' : profile}
+    return render(request,'Myorder.html',context=context)
 
 @login_required(login_url='Login')
 def Newpass(request):    
