@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
-    phone_num = models.CharField(max_length=10)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_num = models.CharField(max_length=10,null=True)
     image = models.ImageField(default='default.png', upload_to='profile_pices')
-    address = models.CharField(max_length=500,default=None,blank=True)
+    address = models.CharField(max_length=500,default=None,null=True)
     def __str__(self):
         return f'{self.user.username} Profile'
 
@@ -16,6 +16,6 @@ class Profile(models.Model):
         img = Image.open(self.image.path)
 
         if img.height > 200 or img.width > 200:
-            output_size = (113, 113)
+            output_size = (200, 200)
             img.thumbnail(output_size)
             img.save(self.img.path)

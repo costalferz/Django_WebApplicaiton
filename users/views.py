@@ -3,7 +3,7 @@ from django.urls import reverse_lazy,reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import *
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -19,9 +19,10 @@ def Loginform(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(username=username, password=password)
-        if user:
+        if user is not None:
             if user.is_active:
                 login(request, user)
+                request.session.set_expiry(20)
                 messages.info(request,"Login Sucuessful") 
                 return HttpResponseRedirect(reverse('home'))
             else:
@@ -52,10 +53,8 @@ def register(request):
                 messages.info(request,"This email has already been registered.")
                 return redirect('/Register')
             else:
-                new_user= User.objects.create_user(
-                username=username,
-                password=password,
-                email=email,)
+                url = '/default.png'
+                new_user= User.objects.create_user(username=username,password=password, email=email,)
                 new_user.save()
                 auth.login(request,new_user)
                 messages.info(request,"Login Sucessful.")
@@ -68,10 +67,15 @@ def register(request):
 
 @login_required(login_url='Login')
 def Myorder(request):
-    if request.method == 'GET':
-        profile = Profile.objects.all()
-        context = {'Image' : profile}
-    return render(request,'Myorder.html',context=context)
+    # if user got column in data base
+    current_user = request.user
+    profile = Profile.objects.all()#(user=current_user)
+    context = {'pro' : profile}
+    return render(request,'Myorder.html',context=context,)
+
+
+
+
 
 @login_required(login_url='Login')
 def Newpass(request):    
