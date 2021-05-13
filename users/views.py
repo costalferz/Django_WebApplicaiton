@@ -21,7 +21,7 @@ def Loginform(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                request.session.set_expiry(300)
+                #request.session.set_expiry(300)
                 messages.info(request,"Login Sucuessful") 
                 return HttpResponseRedirect(reverse('home'))
             else:
@@ -84,20 +84,34 @@ def Newpass(request):
         password=request.POST['password']
         repassword=request.POST['repassword']
         if password==repassword:
-            u = User.objects.get(username=current_user)
+            u = User.objects.get(username=request.user.username)
             u.set_password(password)
             u.save()
             return redirect('/Myorder')
         else:
             messages.info(request,"password doesn't match") 
+
     return render(request,'New-pass.html') 
 
 @login_required(login_url='Login')
 def Accountprofile(request):
     if request.method == "POST":
-        username=request.POST['Username']
-        email=request.POST['E-mail']
-        return redirect('/Myorder')
+        user=request.POST['username']
+        email=request.POST['email']
+        if User.objects.filter(username=user).exists():
+            messages.info(request,"Username already used")
+            return redirect('/Accountprofile')
+        elif User.objects.filter(email=email).exists():
+            messages.info(request,"Email already used")
+            return redirect('/Accountprofile')
+        else:
+
+            update_user = request.user
+            update_user.username=user
+            update_user.email=email
+            update_user.save()
+            messages.info(request,"Update Account Profile Sucessful")
+            return HttpResponseRedirect('/Myorder')
     return render(request,'Account Profile.html') 
 
 @login_required(login_url='Login')
