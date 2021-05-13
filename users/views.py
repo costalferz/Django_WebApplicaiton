@@ -90,7 +90,10 @@ def Newpass(request):
 
 @login_required(login_url='Login')
 def Accountprofile(request):
-    context = {}
+    if request.method == "POST":
+        password=request.POST['Username']
+        repassword=request.POST['E-mail']
+        return redirect('/Myorder')
     return render(request,'Account Profile.html') 
 
 @login_required(login_url='Login')
@@ -101,5 +104,6 @@ def Address (request):
 @login_required(login_url='Login')
 def UpdateProfile(request):
     if request.method == "POST":
-        image = request.POST['image']
+        image = request.POST.get('img')
+        return redirect('/')
     return render(request,'UpdateProfile.html')

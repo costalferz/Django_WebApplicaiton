@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 #from django.contrib.auth import views as auth_views
 from .views import * #Loginform,Logout_view,register
 #from .views import 
@@ -9,6 +10,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('Register', views.Register, name='Register'),
+    path('Reset', auth_views.PasswordResetView.as_view(),name='resetPassword'),
     path('Login', views.Loginform, name='Login'),
     path('Logout',views.Logout_view),
     path('Myorder',views.Myorder,),
