@@ -4,13 +4,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ( CreateView, FormView, TemplateView)
 from django.contrib.auth.decorators import login_required
-from .form import UserRegisterForm
+from .form import ProfileForm
 from .models import Profile
 # Create your views here.
 
@@ -54,6 +53,8 @@ def Register(request):
                 return redirect('/Register')
             else:
                 new_user= User.objects.create_user(username=username,password=password, email=email,)
+                profile = Profile.objects.create(user=new_user)
+                profile.save()
                 new_user.save()
                 auth.login(request,new_user)
                 messages.info(request,"Login Sucessful.")
@@ -77,9 +78,6 @@ def Myorder(request):
 
 
 
-
-
-
 @login_required(login_url='Login')
 def Newpass(request):
     if request.method == "POST":
@@ -97,8 +95,8 @@ def Newpass(request):
 @login_required(login_url='Login')
 def Accountprofile(request):
     if request.method == "POST":
-        password=request.POST['Username']
-        repassword=request.POST['E-mail']
+        username=request.POST['Username']
+        email=request.POST['E-mail']
         return redirect('/Myorder')
     return render(request,'Account Profile.html') 
 
@@ -109,10 +107,13 @@ def Address (request):
 
 
 
+from django.core.files.storage import FileSystemStorage
 @login_required(login_url='Login')
 def UpdateProfile(request):
-    if request.method == "POST":
-        image = request.POST.get('img')
-
-        return redirect('/')
+    if request.method == "POST" and request.FILES.get('photo'):
+        image = request.FILES.get('photo')
+        fs = FileSystemStorage()
+        image_fs = fs.save(image.name, image)
+        image_new = Profile.objects.filter(user=request.user).update(image=image_fs)
+        return redirect('/Myorder')
     return render(request,'UpdateProfile.html')

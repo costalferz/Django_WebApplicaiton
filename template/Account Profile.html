@@ -139,13 +139,13 @@
                     <div class="payment">
                         <div class="mb-3 card-item icon-relative">
                             <label for="formGroupExampleInput" class="label">Username</label>
-                            <input type="text" class="input" id="txtUsername" name="username" size="100" placeholder="Username" required >
+                            <input type="text" class="input" id="txtUsername" name="username" size="100" placeholder="{{ user.username }}" required >
                             <i class="fas fa-user"></i>
                         </div>
 
                         <div class="mb-3 card-item icon-relative">
                             <label for="formGroupExampleInput2" class="label">Email address</label>
-                            <input type="email" class="input" id="email" name="email" size="100" value="" placeholder="E-mail" required>
+                            <input type="email" class="input" id="email" name="email" size="100" value="" placeholder="{{ user.email }}" required>
                             <i class="fas fa-envelope"></i>
                         </div>
 
