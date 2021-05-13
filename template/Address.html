@@ -107,7 +107,7 @@
                                     </div>
 
                                     <div class="col-6 ">
-                                        <div class="btn-2" style="font-size: 17px;">
+                                        <div class="btn-2" style="font-size: 14px;">
                                             {{ user.username }}
                                         </div>
                                         <a href="/UpdateProfile"><div class="btn-3" style="font-size: 12px;">
@@ -139,18 +139,29 @@
                 <div class="wrapper">
                     <form action="" method="POST">
                         {% csrf_token %} 
-                    <div class="payment">
+                        <div class="payment">
                         <div class="mb-3 card-item icon-relative">
                             <label for="formGroupExampleInput" class="label">Contact</label>
-                            <input type="tel" class="input" name="telnum" placeholder="Contact" required>
-                            <i class="fas fa-phone-alt"></i>
+                        {% if user.profile.phone_num %}
+                            <!-- <i class="fas fa-phone-alt"></i> -->
+                            <input type="tel" class="input" name="telnum" maxlength="10" placeholder="{{user.profile.phone_num}}" required>
+                            
+                        {% else %}
+                            <input type="text" class="input" name="telnum" maxlength="10" placeholder="Contact" required>
+                            <!-- <i class="fas fa-phone-alt"></i> -->
                         </div>
+                        {% endif %}
 
                         <div class="mb-3 card-item icon-relative">
-                            <!-- <i class="fas fa-map-marker-alt"></i> -->
                             <label for="formGroupExampleInput2" class="label">Shipping Address</label>
-                            <textarea type="text" class="input" name="address" id="Address" cols="30" rows="8" placeholder="Shipping Address"
+                            <!-- <i class="fas fa-map-marker-alt"></i> -->
+                            {% if user.profile.phone_num %}
+                            <textarea type="text" class="input" name="address" cols="30" rows="8" placeholder="{{user.profile.address}}"
                                 required></textarea>
+                            {% else %}
+                            <textarea type="text" class="input" name="address" cols="30" rows="8" placeholder="Shipping Address"
+                                required></textarea>
+                            {% endif %}
                         </div>
                         <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4
                          border border-blue-700 rounded " style="margin-left: 100px; margin-top: 40px;">Confirm</button>

@@ -1,3 +1,5 @@
+from os import add_dll_directory
+import users
 from django.shortcuts import redirect, render,get_object_or_404
 from django.urls import reverse_lazy,reverse
 from django.http import HttpResponseRedirect, HttpResponse
@@ -115,8 +117,11 @@ def Accountprofile(request):
     return render(request,'Account Profile.html') 
 
 @login_required(login_url='Login')
-def Address (request):
-    context = {}
+def Address(request):
+    if request.method == "POST":
+        phone_num=request.POST['telnum']
+        address=request.POST['address']
+        Contact = Profile.objects.filter(user=request.user).update(phone_num=phone_num,address=address)
     return render(request,'Address.html') 
 
 
