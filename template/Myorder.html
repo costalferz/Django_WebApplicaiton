@@ -125,7 +125,11 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-6">
-                                        <img class="img-user" src=" {{ pro.image.url }}">
+                                        {% if user.profile.image.url %}
+                                        <img class="img-user rounded-circle" style="width: 90px;" src=" {{ user.profile.image.url }}">.
+                                        {% else %}
+                                        <img class="img-user" src="{% static 'img/default.png' %}">.
+                                        {% endif %}
                                     </div>
 
                                     <div class="col-6">

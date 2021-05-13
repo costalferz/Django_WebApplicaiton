@@ -53,7 +53,6 @@ def Register(request):
                 messages.info(request,"This email has already been registered.")
                 return redirect('/Register')
             else:
-                url = '/default.png'
                 new_user= User.objects.create_user(username=username,password=password, email=email,)
                 new_user.save()
                 auth.login(request,new_user)
@@ -68,14 +67,21 @@ def Register(request):
 @login_required(login_url='Login')
 def Myorder(request):
     # if user got column in data base
-    current_user = request.user
-    profile = Profile.objects.all()#(user=current_user)
+    username = request.user.username
+    current_user = User.objects.get(username=username)
+    profile = Profile.objects.filter(user=current_user)#(user=current_user)
     context = {'pro' : profile}
     return render(request,'Myorder.html',context=context,)
 
+
+
+
+
+
+
+
 @login_required(login_url='Login')
 def Newpass(request):
-    current_user = request.user
     if request.method == "POST":
         password=request.POST['password']
         repassword=request.POST['repassword']
@@ -101,9 +107,12 @@ def Address (request):
     context = {}
     return render(request,'Address.html') 
 
+
+
 @login_required(login_url='Login')
 def UpdateProfile(request):
     if request.method == "POST":
         image = request.POST.get('img')
+
         return redirect('/')
     return render(request,'UpdateProfile.html')

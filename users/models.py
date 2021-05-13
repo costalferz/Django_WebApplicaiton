@@ -5,10 +5,12 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_num = models.CharField(max_length=10,null=True)
-    image = models.ImageField(default='default.png', upload_to='profile_pices')
-    address = models.CharField(max_length=500,default=None,null=True)
+    phone_num = models.CharField(max_length=10,blank=True,null=True)
+    image = models.ImageField(default='default.png', upload_to='profile_pices',blank=True,null=True)
+    address = models.CharField(max_length=500,blank=True,null=True)
+
     def __str__(self):
+        
         return f'{self.user.username} Profile'
 
     def save(self, **kwargs):
