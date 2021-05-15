@@ -1,7 +1,5 @@
 # FinalProj_DSI202
 
-about project
-
 built with
 
 installation
