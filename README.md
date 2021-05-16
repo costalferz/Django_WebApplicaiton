@@ -4,7 +4,7 @@ Our Elon website is for anyone who wants to shop for themselves or others on the
 
 # built with
 
-- HTMLv, CSS , JS
+- HTML , CSS , JS
 - Python version 3.9.X
 - Django version 3.1.7
 - Database SQLite
@@ -17,9 +17,6 @@ $ pip install -r requirements.txt
 
 ```sh
 $ python manage.py migrate
-```
-```sh
-$ python manage.py runserver
 ```
 ```sh
 $ python manage.py runserver
