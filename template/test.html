@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="col-md-7">
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Name of Product</th>
+                <th>Tracking Number</th>
+            </tr>
+            
+            <tr>
+                <td>{{ user.username }} </td>
+                <td>{{t.item}}</td>
+                <td>{{ user.username }}</td>
+            </tr>
+            
+            {% for t in tablehistory %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.username }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>222</td>
+                <td>asdas</td>
+                <td>dasda</td>
+            </tr>
+
+        </table>
+       
+
+    </div>
+</body>
+</html>

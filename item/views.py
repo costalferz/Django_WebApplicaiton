@@ -1,10 +1,14 @@
+from os import name
 from django.shortcuts import render,redirect,reverse
 import random
+from django.db.models import Max,Min
 from django.contrib import *
 from django.contrib.auth.models import User
 from django.views.generic import (DetailView,FormView,ListView,TemplateView,UpdateView)
 from django.contrib.auth.decorators import login_required
 from .models import Item,itemHistory,Payment,Category
+import datetime
+
 # Create your views here.
 
 
@@ -19,13 +23,13 @@ def Listitem(request):
     if cat == "Colourful":
         title = "COLOURFUL"
         some_colour = Category.objects.get(category="Colourful")
-        Item_colour = Item.objects.all().filter(category=some_colour).order_by('-name')
+        Item_colour = Item.objects.all().filter(category=some_colour).order_by('name')
         context = {'Item': Item_colour,'title' : title}   
  
     else:
         title = "EARTH TONES"
         some_Earthtones = Category.objects.get(category="Earthtones")
-        Item_Earthtones = Item.objects.all().filter(category=some_Earthtones).order_by('-name')
+        Item_Earthtones = Item.objects.all().filter(category=some_Earthtones).order_by('name')
         context = {'Item': Item_Earthtones,'title' : title}
         
     return render(request,'Category.html',context=context)
@@ -35,6 +39,7 @@ def Random(request):
 
 def Open(request):
     tone = request.GET['Tone']
+    messages.info(request,"Double tap for Surprise") 
     if tone == "Earthtones":
         return render(request,'OpenEarthtone.html')
     elif tone == "Colourful":
@@ -43,21 +48,20 @@ def Open(request):
 def Detail(request):
     type=request.GET['type']
     if request.user.is_authenticated:
+        tracknum =  "KE " + str(random.randint(100000000, 1000000000))+ " TH"
+
         if type == "Earthtones":
-            some_Earthtones = Category.objects.get(category="Earthtones")
-            Item_Earthtones = list(Item.objects.all().filter(category=some_Earthtones))
-            randomItemE = random.sample(Item_Earthtones,1)
-            context = {'Item': randomItemE}
+            randomItem = Item.objects.filter(category=1).order_by('?')[:1]
         elif type == "Colourful":
-            some_Colourful = Category.objects.get(category="Colourful")
-            Item_Colourful = list(Item.objects.all().filter(category=some_Colourful))
-            randomItemC = random.sample(Item_Colourful,1)
-            context = {'Item': randomItemC}
+            randomItem = Item.objects.filter(category=2).order_by('?')[:1]
+        history = itemHistory(user=request.user , item=randomItem[0],date=datetime.datetime.now(),trackNum=tracknum)
+        history.save()
+        messages.info(request,"Thank you! Hope you like the prize") 
+        context = {'Item': randomItem} 
         return render(request,'Detail.html',context=context)
     else:
-        messages.info(request,"Login Before Random please") 
+        messages.info(request,"Please login beforce Random") 
         return redirect('/Login')
-        
 
 @login_required(login_url='Login')
 def Payment(request):
@@ -74,7 +78,7 @@ def Payment(request):
 
 
 class SearchItemListView(ListView):
-    template_name = "Colourful.html"
+    template_name = "Detail.html"
     model = Item
 
     def get_queryset(self):

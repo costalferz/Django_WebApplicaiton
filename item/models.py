@@ -28,7 +28,6 @@ class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT,default=None)
     price = models.PositiveIntegerField(default=0)
     hashtag = models.TextField(max_length=100,default=None)
-    
     def __str__(self):
         return self.name
 
@@ -41,7 +40,6 @@ class Item(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.img.path)
-    
     class Meta:
         verbose_name_plural = "สินค้า"
 
@@ -52,7 +50,6 @@ class itemHistory(models.Model):
     trackNum = models.CharField(max_length=15)
     class Meta:
         verbose_name_plural = "ประวัติการสั่งซื้อ"
-
 class Payment(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     name = models.TextField(max_length=100,default="name")

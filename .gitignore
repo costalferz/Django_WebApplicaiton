@@ -4,3 +4,4 @@ item/__pycache__/
 item/migrations/
 users/__pycache__/
 users/migrations/
+output.dot

@@ -13,6 +13,7 @@ from django.views.generic import ( CreateView, FormView, TemplateView)
 from django.contrib.auth.decorators import login_required
 from .form import ProfileForm
 from .models import Profile
+from item.models import Item,itemHistory,Payment,Category
 # Create your views here.
 
 def Loginform(request):
@@ -23,8 +24,8 @@ def Loginform(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                #request.session.set_expiry(300)
-                messages.info(request,"Login Sucuessful") 
+                request.session.set_expiry(600)
+                messages.info(request,"Welcome to Elon Mysterious box Feel free to random.") 
                 return HttpResponseRedirect(reverse('home'))
             else:
                 messages.info(request,"Please Login Again.") 
@@ -59,7 +60,7 @@ def Register(request):
                 profile.save()
                 new_user.save()
                 auth.login(request,new_user)
-                messages.info(request,"Login Sucessful.")
+                messages.info(request,"Welcome to Elon Mysterious box Feel free to random.")
                 return redirect('/')
         else:
             messages.info(request,"password doesn't match")
@@ -70,10 +71,9 @@ def Register(request):
 @login_required(login_url='Login')
 def Myorder(request):
     # if user got column in data base
-    username = request.user.username
-    current_user = User.objects.get(username=username)
-    profile = Profile.objects.filter(user=current_user)#(user=current_user)
-    context = {'pro' : profile}
+    
+    tablehistory = itemHistory.objects.filter(user=request.user).order_by("-date")[:5]
+    context = {'history' : tablehistory}
     return render(request,'Myorder.html',context=context,)
 
 

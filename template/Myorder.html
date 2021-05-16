@@ -15,38 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 
     <title>{% block title %} My Order {% endblock %}</title>
-    <style>
-        .group button {
-            background-color: #AC87B6;
-            border: 0px solid white;
-            color: #FAFFA6;
-            padding: 10px 24px;
-            width: 70%;
-            display: block;
-            margin-left: 20%;
-        }
-        
-        .group button:hover {
-            color: white;
-        }
-        
-        a:visited {
-            color: #FAFFA6;
-            background-color: transparent;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            color: #F4A8A8;
-            background-color: transparent;
-            text-decoration: none;
-        }
 
-        .dropdown-menu{
-            background-color: #F4A8A8;
-            border: 0px #F4A8A8;
-        }
-    </style>
 </head>
 
 <body>
@@ -165,27 +134,14 @@
                         <th>Name of Product</th>
                         <th>Tracking Number</th>
                     </tr>
-
                     <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        {% for i in history %}
+                        <td>{{ i.date |date:" d M Y"  }}</td>
+                        <td>{{ i.item }}</td>
+                        <td>{{ i.trackNum }}</td>
+                        
                     </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
+                    {% endfor %}
 
                 </table>
 
@@ -244,7 +200,38 @@
     </footer>
 
 
+    <style>
+        .group button {
+            background-color: #AC87B6;
+            border: 0px solid white;
+            color: #FAFFA6;
+            padding: 10px 24px;
+            width: 70%;
+            display: block;
+            margin-left: 20%;
+        }
+        
+        .group button:hover {
+            color: white;
+        }
+        
+        a:visited {
+            color: #FAFFA6;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #F4A8A8;
+            background-color: transparent;
+            text-decoration: none;
+        }
 
+        .dropdown-menu{
+            background-color: #F4A8A8;
+            border: 0px #F4A8A8;
+        }
+    </style>
 
 </body>
 

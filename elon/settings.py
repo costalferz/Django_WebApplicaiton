@@ -42,7 +42,30 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'item',
     'users',
+    'django.contrib.sites',
+    'allauth', #new
+    'allauth.account', #new
+    'allauth.socialaccount', #new
+    'allauth.socialaccount.providers.google',
 ]
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '266583886876-r787gn0bmkpk9uocfmc27ougcq1v74o9.apps.googleusercontent.com',
+            'secret': 'dykHtQoKCA2-CVaOz5sIkifQ',
+            'key': ''
+        }
+    }
+}
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,7 +156,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-SITE_ID = 2
+SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
