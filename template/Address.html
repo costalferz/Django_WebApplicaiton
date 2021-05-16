@@ -20,6 +20,7 @@
 </head>
 
 <body>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-custom navbar-mainbg">
         <a class="logo" href="/"><img
@@ -83,7 +84,13 @@
 
         </div>
     </nav>
-
+    {%if messages%}
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+      </div>
+      {%endif%}
 
     <div class="container-fluid-lg">
         <div class="row">

@@ -134,6 +134,7 @@
                         <th>Name of Product</th>
                         <th>Tracking Number</th>
                     </tr>
+                    {% if history %}
                     <tr>
                         {% for i in history %}
                         <td>{{ i.date |date:" d M Y"  }}</td>
@@ -142,7 +143,32 @@
                         
                     </tr>
                     {% endfor %}
-
+                    {% else %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                    </tr>
+                    {% endif %}
                 </table>
 
 

@@ -20,7 +20,13 @@
 
 </head>
 <body>
-
+	{%if messages%}
+	<div class="alert alert-danger" role="alert">
+		{% for message in messages %}
+		{{message}}
+		{% endfor %}
+	  </div>
+	  {%endif%}
 
 	<div class="row" style="padding: 0px;margin: 0px;">
 		<div class="col-md" style="text-align: center;">

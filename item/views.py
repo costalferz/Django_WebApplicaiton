@@ -60,50 +60,35 @@ def Detail(request):
         context = {'Item': randomItem} 
         return render(request,'Detail.html',context=context)
     else:
-        messages.info(request,"Please login beforce Random") 
+        messages.info(request,"Please Login Before Try to Random") 
         return redirect('/Login')
 
 @login_required(login_url='Login')
-def Payment(request):
-    
+def Payments(request):
     if request.method == "POST":
         name = request.POST['name']
         numcard = request.POST['numcard']
         expire = request.POST['expires']
         cvv = request.POST['cvv']
+        p = Payment(user=request.user,name=name,Numcard=numcard,expire=expire,cvv=cvv)
+        p.save()
         messages.info(request,"Sucessful")
         return redirect('/')
-
     return render(request,'Payment.html')
 
 
 class SearchItemListView(ListView):
-    template_name = "Detail.html"
+    template_name = "Home.html"
     model = Item
 
     def get_queryset(self):
         queryset = super(SearchItemListView, self).get_queryset()
         q = self.request.GET.get("q")
         if q:
-            item_by_name = queryset.filter(name__icontains=q)
-            item_by_category = queryset.filter(category__icontains=q)
+            item_by_name = queryset.filter(name__contains=q)
+            item_by_category = queryset.filter(category__contains=q)
             return item_by_name | item_by_category
         return queryset
 
 
 
-
-
-
-
-
-
-
-
-
-# class ItemDetailView(DetailView):
-#     model = Item
-#     template_name = "Detail.html"
-
-#     def get_success_url(self):
-#         return reverse('Detail', kwargs={'slug': self.object.slug})

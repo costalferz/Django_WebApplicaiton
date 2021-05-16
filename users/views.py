@@ -28,10 +28,10 @@ def Loginform(request):
                 messages.info(request,"Welcome to Elon Mysterious box Feel free to random.") 
                 return HttpResponseRedirect(reverse('home'))
             else:
-                messages.info(request,"Please Login Again.") 
+                messages.info(request,"Please Try to Login Again.") 
                 return redirect('/Login')
         else:
-            messages.info(request,"Please Try to Login Again ") 
+            messages.info(request,"Please Register Before Try to Login") 
             return redirect('/Login')
             
     else:
@@ -39,6 +39,7 @@ def Loginform(request):
 
 def Logout_view(request):
     auth.logout(request)
+    messages.info(request,"You are now Logged Out ") 
     return redirect('/Login')
 
 def Register(request):
@@ -63,21 +64,17 @@ def Register(request):
                 messages.info(request,"Welcome to Elon Mysterious box Feel free to random.")
                 return redirect('/')
         else:
-            messages.info(request,"password doesn't match")
+            messages.info(request,"Password doesn't match")
             return redirect('/Register')
     else:
         return render(request, 'Signup.html')
 
 @login_required(login_url='Login')
 def Myorder(request):
-    # if user got column in data base
     
     tablehistory = itemHistory.objects.filter(user=request.user).order_by("-date")[:5]
     context = {'history' : tablehistory}
     return render(request,'Myorder.html',context=context,)
-
-
-
 
 
 @login_required(login_url='Login')
@@ -92,7 +89,7 @@ def Newpass(request):
             return redirect('/Myorder')
         else:
             messages.info(request,"password doesn't match") 
-
+            return redirect("/Newpass")
     return render(request,'New-pass.html') 
 
 @login_required(login_url='Login')
@@ -107,7 +104,6 @@ def Accountprofile(request):
             messages.info(request,"Email already used")
             return redirect('/Accountprofile')
         else:
-
             update_user = request.user
             update_user.username=user
             update_user.email=email
@@ -122,9 +118,9 @@ def Address(request):
         phone_num=request.POST['telnum']
         address=request.POST['address']
         Contact = Profile.objects.filter(user=request.user).update(phone_num=phone_num,address=address)
+        messages.info(request,"Update Contact Sucessful")
+        return HttpResponseRedirect('/Myorder') 
     return render(request,'Address.html') 
-
-
 
 from django.core.files.storage import FileSystemStorage
 @login_required(login_url='Login')
@@ -134,5 +130,6 @@ def UpdateProfile(request):
         fs = FileSystemStorage()
         image_fs = fs.save(image.name, image)
         image_new = Profile.objects.filter(user=request.user).update(image=image_fs)
+        messages.info(request,"Update Profile Sucessful")
         return redirect('/Myorder')
     return render(request,'UpdateProfile.html')

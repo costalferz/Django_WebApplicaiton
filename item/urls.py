@@ -11,7 +11,8 @@ urlpatterns = [
     path('Random',views.Random,name='random'),
     #path('product/<slug:slug>',ItemDetailView.as_view(),name='Detail'),
     path('ProductDetail' , views.Detail,name='Detail'),
-    path('Payment' , views.Payment),
+    path('Payment' , views.Payments),
+    path('Search' , SearchItemListView.as_view(),name='search'),
     path('Open',views.Open,name='open'),
 
 

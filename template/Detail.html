@@ -37,7 +37,11 @@
                 </div>
                 {% endfor %}     
                 <div class="product-price">
-                    <a href="/Payment" class="continue-btn">CONTINUE</a> <!--# คือ link ไปหน้า payment-->
+                    {% if user.payment %}
+                    <a href="/" class="continue-btn">CONTINUE</a> <!--# คือ link ไปหน้า payment-->
+                    {% else %}
+                    <a href="/Payment" class="continue-btn">CONTINUE</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
