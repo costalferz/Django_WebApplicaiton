@@ -1,12 +1,27 @@
-# FinalProj_DSI202
+# ELON Webapp Project
 
-#About the project#
-Our Elon website is for anyone who wants to shop for themselves or others on the big day. But don't know what to buy So we have created a website for random products. There are two types of options available on our website are earthtones and colorful tones. Our products come in a variety of categories for each color scheme. Allowing us to obtain products that meet our needs.
+Our Elon website is for anyone who wants to shop for themselves or others on the big day. But don't know what to buy So we have created a website for random products.
 
-built with
+# built with
 
-installation
-elon project use python version 3.9.2 to dev
+- HTMLv, CSS , JS
+- Python version 3.9.X
+- Django version 3.1.7
+- Database SQLite
 
-please install requirements.txt
-before run project
+# installation
+
+```sh
+$ pip install -r requirements.txt
+```
+
+```sh
+$ python manage.py migrate
+```
+```sh
+$ python manage.py runserver
+```
+```sh
+$ python manage.py runserver
+```
+And navigate to `http://127.0.0.1:8000`.
