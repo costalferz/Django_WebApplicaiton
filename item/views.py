@@ -70,7 +70,7 @@ def Payments(request):
         numcard = request.POST['numcard']
         expire = request.POST['expires']
         cvv = request.POST['cvv']
-        p = Payment(user=request.user,name=name,Numcard=numcard,expire=expire,cvv=cvv)
+        p = Payment(user=request.user,name=name,NumCard=numcard,expire=expire,cvv=cvv)
         p.save()
         messages.info(request,"Sucessful")
         return redirect('/')

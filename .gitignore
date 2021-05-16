@@ -5,3 +5,5 @@ item/migrations/
 users/__pycache__/
 users/migrations/
 output.dot
+erd.dot
+erd.png
