@@ -60,7 +60,7 @@ def Register(request):
                 profile = Profile.objects.create(user=new_user)
                 profile.save()
                 new_user.save()
-                auth.login(request,new_user)
+                auth.login(request,new_user,backend='django.contrib.auth.backends.ModelBackend')
                 messages.info(request,"Welcome to Elon Mysterious box Feel free to random.")
                 return redirect('/')
         else:
