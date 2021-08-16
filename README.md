@@ -1,4 +1,4 @@
-#DSI 202 Project
+# DSI 202 Project
 DSI202 Full Stack Software Development
 
 # ELON Webapp Project
