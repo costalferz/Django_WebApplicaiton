@@ -145,6 +145,7 @@
     width: 20%;
     margin-top: 0px;
 }
+
   .carousel-caption a {
     display: inline-block;
     padding: 15px;
@@ -161,7 +162,7 @@
     margin-bottom: 17%;
     margin-right: 54%;
   }
-
+/* Tablet */
   @media (max-width: 991px){
     .carousel-caption a{
     font-size: 80%;
@@ -169,18 +170,18 @@
     width:60%;
     }
     .carousel-caption{
-        margin-bottom: 12%;
+        margin-bottom: 10%;
     }
   }
-
+/* Desktop */
   @media (min-width: 992px){
     .carousel-caption a{
-    font-size: 170%;
-    padding: 5px;
-    width:60%;
+    font-size: 120%;
+    padding: 10px;
+    width: 70%;
     }
     .carousel-caption{
-        margin-bottom: 19%;
+        margin-bottom: 10%;
     }
   }
   @media (max-width: 600px){
@@ -190,7 +191,7 @@
         width:80%;
         }
         .carousel-caption{
-            margin-bottom: 7%;
+            margin-bottom: 3%;
         }
   }
 
