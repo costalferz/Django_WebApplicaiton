@@ -8,3 +8,4 @@ output.dot
 erd.dot
 erd.png
 .env
+staticfile/
