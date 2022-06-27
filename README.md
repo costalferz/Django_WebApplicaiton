@@ -20,6 +20,10 @@ $ pip install -r requirements.txt
 ```sh
 $ python manage.py migrate
 ```
+
+```sh
+$ python manage.py collectstatic --no-input
+```
 ```sh
 $ python manage.py runserver
 ```
